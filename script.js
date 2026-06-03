@@ -22,7 +22,7 @@ const directions = [
         description:
           "基于双分支相位预测的无层归一化 CNN-Mamba 语音增强网络，提供英文与中文语音增强对比样例。",
         result: "支持训练、推理、客观指标评测和中英文增强试听。",
-        tags: ["CNN-Mamba", "Phase Prediction", "Mandarin", "VoiceBank+DEMAND"],
+        tags: ["CNN-Mamba", "Dual-branch Phase Prediction", "Input-biased Dynamic Tanh", "Mandarin Enhancement"],
         year: "2025",
         repoPath: "assets/DyTSwiG-SE-main/",
         links: [
@@ -75,7 +75,7 @@ const directions = [
         description:
           "面向跨语言和低信噪比场景的三重解码器语音增强模型，强化局部特征建模与高频信息保留。",
         result: "涵盖训练、推理及评估，提供汉语对比试听。",
-        tags: ["Cross-lingual", "Low-SNR", "High-frequency", "THCHS+DNS"],
+        tags: ["Triple-decoder", "Local-augmented Conformer", "High-frequency Information","Cross-lingual", "Low-SNR", ],
         year: "2025",
         repoPath: "assets/TdSENet-main/",
         links: [
@@ -111,7 +111,7 @@ const directions = [
         description:
           "在 CMGAN 框架中引入 Time-Mamba-Frequency-Conformer、通道特征分支与频率调制模块，用于复杂噪声下的单通道语音增强。",
         result: "支持训练、推理和客观指标计算。",
-        tags: ["CMGAN", "Mamba", "Conformer", "DNSMOS"],
+        tags: ["CMGAN", "Mamba", "Conformer"],
         year: "2024",
         repoPath: "assets/M-CMGAN/",
         links: [
