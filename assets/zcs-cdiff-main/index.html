@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+ZCS-CDiff audio demo page
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+          <style type="text/css">
+                 a:link { color: black; text-decoration: none;}
+                 a:visited { color: black; text-decoration: none;}
+                 a:hover { color: blue; text-decoration: underline;}
+             #player {width: 190px;}
+		  
+          </style>
+          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no", user-scalable="yes">
+          <meta name="description" content="ZCS-CDiff audio demo page">
+          <meta name="autor" content="ZCS-CDiff">
+          <title>ZCS-CDiff Audio Demo</title>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+          <link href="css/styles.css" rel="stylesheet">
+          <link rel="stylesheet" href="css/heading.css">
+          <link rel="stylesheet" href="css/body.css">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/css/bootstrap-slider.min.css" integrity="sha512-3q8fi8M0VS+X/3n64Ndpp6Bit7oXSiyCnzmlx6IDBLGlY5euFySyJ46RUlqIVs0DPCGOypqP8IRk/EyPvU28mQ==" crossorigin="anonymous" />
+      </head> 
+    <body id="page-top"> 
+        <nav class="navbar navbar-expand-lg bg-secondary fixed-top" id="mainNav">
+            <div class="container"><a class="navbar-brand js-scroll-trigger" href="#page-top">ZCS-CDiff</a>
+                <button class="navbar-toggler navbar-toggler-right font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu <i class="fas fa-bars"></i></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <!-- <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#abstract">Abstract</a> -->
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#abstract">Abstract</a></li>
+ 			<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#intratts">Zero-shot intra-lingual TTS</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#crosstts">Zero-shot cross-lingual TTS</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#cstts">Zero-shot code-switching TTS</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#ablation">Ablation Study</a></li>
+
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+       <header class="masthead bg-white text-left"> 
+            <div class="container d-flex align-items-center flex-column">
+                <h1 class="masthead-heading mb-0">ZCS-CDiff: A Zero-Shot Code-Switching TTS System with Conformer-Based Diffusion Model</h1>
+		            <p class="pre-wrap lead">&nbsp;</p>
+                <img src="img/1.png" alt="main" style="max-width: 103%; height: auto;">
+                <em>Overall framework of the ZCS-CDiff</em><p></p><br>
+            </div>
+        </header>
+
+        <style>
+          tr, td {
+            text-align:center;
+          }
+          tr {
+            font-size: 15pt;
+          }
+          td {
+            font-size: 13pt;
+          }
+        </style>
+         
+      <section class="page-section alert-secondary portfolio" id="abstract">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="page-section-heading text-secondary mb-0 d-inline-block">Abstract</h2>
+                </div>
+                <div class="divider-custom">
+                    <div class="divider-custom"></div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-12 ml-auto">
+                      <p class="pre-wrap lead">Code-Switching (CS) Text-To-Speech (TTS) models have gained attention due to the increasing prevalence of multilingual communication. However, existing models struggle to meet the growing demand for personalized CS TTS, particularly in Zero-Shot (ZS) scenarios where the model should generate speech for an unseen speaker from reference speech. In this paper, we propose ZCS-CDiff, a zero-shot code-switching TTS system with the Conformer-based diffusion model. We disentangle speech features and use the diffusion model to precisely model these disentangled attributes, resulting in high-quality ZS CS speech. Additionally, we introduce a Conformer-based WaveNet as the denoising network within the diffusion model to further improve the accuracy of modeling different attributes. We also designed a speaker-assist module to help the model better handle speaker information extracted from the reference speech, resulting in CS speech with higher speaker similarity. Experimental results and ablation studies demonstrate that the ZS CS speech generated by ZCS-CDiff has good speech naturalness, intelligibility, and speaker similarity while confirming the effectiveness of our design choices.</p>
+                     
+	                      <p class="pre-wrap lead">&nbsp;</p>
+	                    </div>
+                    </div>         
+                </div>
+            </div>
+        </section>
+
+<!--<section class="page-section bg-primary text-white mb-0" id="m2m">        -->
+<section class="page-section bg-info text-white mb-0" id="intratts">
+          <div class="container">
+            <div class="text-center">
+              <h2 class="page-section-heading d-inline-block">Zero-shot intra-lingual TTS</h2>
+<!--              <p class="pre-wrap lead">Unseen speakers from the VCTK dataset</p>-->
+            </div>
+            <div class="divider-custom divider-light"></div>
+              <div class="row">
+                  <div class="col-lg-12 ml-auto">
+
+                    <table class="table table-responsive align-content-center"  style="background-color: rgba(255, 255, 255, 0.993); border-radius: 20px">
+                      <thead>
+                        <tr >
+                       <th colspan="5"  style="width: 80%" ><em>Speaker's language in reference speech: English </em><p></p><p><em>Text: He could feel the warmth of the sun on his face, a welcome change after the long, cold winter months.</em></p>
+                       </th> 
+                      </tr>
+                    
+                    </thead>
+                      <tbody>
+
+			  </tr>
+                          <td><p><strong> Reference </strong></p>
+                            <audio id="player" controls><source src="audio/intra/en/sentence1/p257_144_mic2.flac" type="audio/wav"></audio>
+                          </td>
+
+                          <td><p><strong> FastSpeech 2 </strong></p>
+                            <audio id="player" controls><source src="audio/intra/en/sentence1/fs2_intra_EN_328.wav" type="audio/wav"></audio>
+                          </td>
+			  
+			  <td><p><strong> YourTTS </strong></p> 
+                            <audio id="player" controls><source src="audio/intra/en/sentence1/yourtts_intra_EN_328.wav" type="audio/wav"></audio>
+                          </td>
+			 
+			  <td><p><strong> ZCS-CDiff </strong></p>
+                            <audio id="player" controls><source src="audio/intra/en/sentence1/CDiff_intra_EN_328.wav" type="audio/wav"></audio>
+                          </td>
+
+                        </tr>
+			 </tr>
+                      </tbody>
+                    </table>
+   
+
+
+
+
+                 <table class="table table-responsive align-content-center"  style="background-color: rgba(255, 255, 255, 0.993); border-radius: 20px">
+                      <thead>
+                        <tr >
+                       <th colspan="5"  style="width: 80%" ><em>Speaker's language in reference speech: English </em><p></p><p><em>Text: She sat by the fire, the warmth from the flames a welcome contrast to the chilly night air.</em></p>
+                       </th>
+                      </tr>
+
+                    </thead>
+                      <tbody>
+
+			  </tr>
+                          <td><p><strong> Reference </strong></p>
+                            <audio id="player" controls><source src="audio/intra/en/sentence2/s5_195_mic2.flac" type="audio/wav"></audio>
+                          </td>
+
+                          <td><p><strong> FastSpeech 2 </strong></p>
+                            <audio id="player" controls><source src="audio/intra/en/sentence2/fs2_intra_EN_4490.wav" type="audio/wav"></audio>
+                          </td>
+
+			  <td><p><strong> YourTTS </strong></p>
+                            <audio id="player" controls><source src="audio/intra/en/sentence2/yourtts_intra_EN_4490.wav" type="audio/wav"></audio>
+                          </td>
+
+			  <td><p><strong> ZCS-CDiff </strong></p>
+                            <audio id="player" controls><source src="audio/intra/en/sentence2/CDiff_intra_EN_4490.wav" type="audio/wav"></audio>
+                          </td>
+
+                        </tr>
+			 </tr>
+                      </tbody>
+                    </table>
+
+
+
+
+               <table class="table table-responsive align-content-center"  style="background-color: rgba(255, 255, 255, 0.993); border-radius: 20px">
+                      <thead>
+                        <tr >
+                       <th colspan="5"  style="width: 80%" ><em>Speaker's language in reference speech: Chinese </em><p></p><p><em>Text: 在宁静的夜晚，仰望星空，满天的繁星仿佛在述说着宇宙的秘密。</em></p>
+                       </th>
+                      </tr>
+
+                    </thead>
+                      <tbody>
+
+			  </tr>
+                          <td><p><strong> Reference </strong></p>
+                            <audio id="player" controls><source src="audio/intra/cn/sentence1/BAC009S0133W0214.wav" type="audio/wav"></audio>
+                          </td>
+
+                          <td><p><strong> FastSpeech 2 </strong></p>
+                            <audio id="player" controls><source src="audio/intra/cn/sentence1/fs2_intra_CN_1615.wav" type="audio/wav"></audio>
+                          </td>
+
+			  <td><p><strong> YourTTS </strong></p>
+                            <audio id="player" controls><source src="audio/intra/cn/sentence1/yourtts_intra_CN_1615.wav" type="audio/wav"></audio>
+                          </td>
+
+			  <td><p><strong> ZCS-CDiff </strong></p>
+                            <audio id="player" controls><source src="audio/intra/cn/sentence1/CDiff_intra_CN_1615.wav" type="audio/wav"></audio>
+                          </td>
+
+                        </tr>
+			 </tr>
+                      </tbody>
+                    </table>
+
+
+              <table class="table table-responsive align-content-center"  style="background-color: rgba(255, 255, 255, 0.993); border-radius: 20px">
+                      <thead>
+                        <tr >
+                       <th colspan="5"  style="width: 80%" ><em>Speaker's language in reference speech: Chinese </em><p></p><p><em>Text: 一场春雨过后，天空变得格外清澈，空气中弥漫着泥土的芬芳。</em></p>
+                       </th>
+                      </tr>
+
+                    </thead>
+                      <tbody>
+
+			  </tr>
+                          <td><p><strong> Reference </strong></p>
+                            <audio id="player" controls><source src="audio/intra/cn/sentence2/BAC009S0217W0294.wav" type="audio/wav"></audio>
+                          </td>
+
+                          <td><p><strong> FastSpeech 2 </strong></p>
+                            <audio id="player" controls><source src="audio/intra/cn/sentence2/fs2_intra_CN_2342.wav" type="audio/wav"></audio>
+                          </td>
+
+			  <td><p><strong> YourTTS </strong></p>
+                            <audio id="player" controls><source src="audio/intra/cn/sentence2/yourtts_intra_CN_2342.wav" type="audio/wav"></audio>
+                          </td>
+
+			  <td><p><strong> ZCS-CDiff </strong></p>
+                            <audio id="player" controls><source src="audio/intra/cn/sentence2/CDiff_intra_CN_2342.wav" type="audio/wav"></audio>
+                          </td>
+
+                        </tr>
+			 </tr>
+                      </tbody>
+                    </table>
+
+                  </div>
+                </div> 
+            </div>
+</section>
+
+
+
+
+
+<section class="page-section bg-primary text-white mb-0" id="crosstts">
+          <div class="container">
+            <div class="text-center">
+              <h2 class="page-section-heading d-inline-block">Zero-shot cross-lingual TTS</h2>
+<!--              <p class="pre-wrap lead">Unseen speakers from the VCTK dataset</p>-->
+            </div>
+            <div class="divider-custom divider-light"></div>
+              <div class="row">
+                  <div class="col-lg-12 ml-auto">
+
+                    <table class="table table-responsive align-content-center"  style="background-color: rgba(255, 255, 255, 0.993); border-radius: 20px">
+                      <thead>
+                        <tr >
+                       <th colspan="5"  style="width: 80%" ><em>Speaker's language in reference speech: English </em><p></p><p><em>Text: 冬天的雪景总是让人感到无比的宁静与祥和，仿佛世界都安静了下来。</em></p>
+                       </th>
+                      </tr>
+
+                    </thead>
+                      <tbody>
+
+			  </tr>
+                          <td><p><strong> Reference </strong></p>
+                            <audio id="player" controls><source src="audio/cross/en/sentence1/p294_086_mic2.flac" type="audio/wav"></audio>
+                          </td>
+
+                          <td><p><strong> FastSpeech 2 </strong></p>
+                            <audio id="player" controls><source src="audio/cross/en/sentence1/fs2_cross_EN_200.wav" type="audio/wav"></audio>
+                          </td>
+
+			  <td><p><strong> YourTTS </strong></p>
+                            <audio id="player" controls><source src="audio/cross/en/sentence1/yourtts_cross_EN_200.wav" type="audio/wav"></audio>
+                          </td>
+
+			  <td><p><strong> ZCS-CDiff </strong></p>
+                            <audio id="player" controls><source src="audio/cross/en/sentence1/CDiff_cross_EN_200.wav" type="audio/wav"></audio>
+                          </td>
+
+                        </tr>
+			 </tr>
+                      </tbody>
+                    </table>
+
+
+
+
+
+                 <table class="table table-responsive align-content-center"  style="background-color: rgba(255, 255, 255, 0.993); border-radius: 20px">
+                      <thead>
+                        <tr >
+                       <th colspan="5"  style="width: 80%" ><em>Speaker's language in reference speech: English </em><p></p><p><em>Text: 初春的清晨，空气中弥漫着花草的香气，令人神清气爽。</em></p>
+                       </th>
+                      </tr>
+
+                    </thead>
+                      <tbody>
+
+			  </tr>
+                          <td><p><strong> Reference </strong></p>
+                            <audio id="player" controls><source src="audio/cross/en/sentence2/p298_292_mic2.flac" type="audio/wav"></audio>
+                          </td>
+
+                          <td><p><strong> FastSpeech 2 </strong></p>
+                            <audio id="player" controls><source src="audio/cross/en/sentence2/fs2_cross_EN_3517.wav" type="audio/wav"></audio>
+                          </td>
+
+			  <td><p><strong> YourTTS </strong></p>
+                            <audio id="player" controls><source src="audio/cross/en/sentence2/yourtts_cross_EN_3517.wav" type="audio/wav"></audio>
+                          </td>
+
+			  <td><p><strong> ZCS-CDiff </strong></p>
+                            <audio id="player" controls><source src="audio/cross/en/sentence2/CDiff_cross_EN_3517.wav" type="audio/wav"></audio>
+                          </td>
+
+                        </tr>
+			 </tr>
+                      </tbody>
+                    </table>
+
+
+
+
+               <table class="table table-responsive align-content-center"  style="background-color: rgba(255, 255, 255, 0.993); border-radius: 20px">
+                      <thead>
+                        <tr >
+                       <th colspan="5"  style="width: 80%" ><em>Speaker's language in reference speech: Chinese </em><p></p><p><em>Text: She could hear the soft murmur of the river as it flowed past, its gentle rhythm a soothing background to her thoughts.</em></p>
+                       </th>
+                      </tr>
+
+                    </thead>
+                      <tbody>
+
+			  </tr>
+                          <td><p><strong> Reference </strong></p>
+                            <audio id="player" controls><source src="audio/cross/cn/sentence1/BAC009S0126W0366.wav" type="audio/wav"></audio>
+                          </td>
+
+                          <td><p><strong> FastSpeech 2 </strong></p>
+                            <audio id="player" controls><source src="audio/cross/cn/sentence1/fs2_cross_CN_200.wav" type="audio/wav"></audio>
+                          </td>
+
+			  <td><p><strong> YourTTS </strong></p>
+                            <audio id="player" controls><source src="audio/cross/cn/sentence1/yourtts_cross_CN_200.wav" type="audio/wav"></audio>
+                          </td>
+
+			  <td><p><strong> ZCS-CDiff </strong></p>
+                            <audio id="player" controls><source src="audio/cross/cn/sentence1/CDiff_cross_CN_200.wav" type="audio/wav"></audio>
+                          </td>
+
+                        </tr>
+			 </tr>
+                      </tbody>
+                    </table>
+
+
+              <table class="table table-responsive align-content-center"  style="background-color: rgba(255, 255, 255, 0.993); border-radius: 20px">
+                      <thead>
+                        <tr >
+                       <th colspan="5"  style="width: 80%" ><em>Speaker's language in reference speech: Chinese </em><p></p><p><em>Text: The old library was a treasure trove of stories, each book a portal to a different world waiting to be explored.</em></p>
+                       </th>
+                      </tr>
+
+                    </thead>
+                      <tbody>
+
+			  </tr>
+                          <td><p><strong> Reference </strong></p>
+                            <audio id="player" controls><source src="audio/cross/cn/sentence2/BAC009S0720W0212.wav" type="audio/wav"></audio>
+                          </td>
+
+                          <td><p><strong> FastSpeech 2 </strong></p>
+                            <audio id="player" controls><source src="audio/cross/cn/sentence2/fs2_cross_CN_114.wav" type="audio/wav"></audio>
+                          </td>
+
+			  <td><p><strong> YourTTS </strong></p>
+                            <audio id="player" controls><source src="audio/cross/cn/sentence2/yourtts_cross_CN_114.wav" type="audio/wav"></audio>
+                          </td>
+
+			  <td><p><strong> ZCS-CDiff </strong></p>
+                            <audio id="player" controls><source src="audio/cross/cn/sentence2/CDiff_cross_CN_114.wav" type="audio/wav"></audio>
+                          </td>
+
+                        </tr>
+			 </tr>
+                      </tbody>
+                    </table>
+
+                  </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+ <section class="page-section bg-info text-white mb-0" id="cstts">
+          <div class="container">
+            <div class="text-center">
+              <h2 class="page-section-heading d-inline-block">Zero-shot code-Switching TTS</h2>
+<!--              <p class="pre-wrap lead">Unseen speakers from the VCTK dataset</p>-->
+            </div>
+            <div class="divider-custom divider-light"></div>
+              <div class="row">
+                  <div class="col-lg-12 ml-auto">
+
+                    <table class="table table-responsive align-content-center"  style="background-color: rgba(255, 255, 255, 0.993); border-radius: 20px">
+                      <thead>
+                        <tr >
+                       <th colspan="5"  style="width: 80%" ><em>Speaker's language in reference speech: English </em><p></p><p><em>Text: 最近的新闻报道引发了很多关于social justice的讨论，大家都在关注如何构建一个更加公平和公正的社会。</em></p>
+                       </th>
+                      </tr>
+
+                    </thead>
+                      <tbody>
+
+			  </tr>
+                          <td><p><strong> Reference </strong></p>
+                            <audio id="player" controls><source src="audio/cs/en/sentence1/p306_244_mic2.flac" type="audio/wav"></audio>
+                          </td>
+
+                          <td><p><strong> FastSpeech 2 </strong></p>
+                            <audio id="player" controls><source src="audio/cs/en/sentence1/fs2_CS_EN_937.wav" type="audio/wav"></audio>
+                          </td>
+
+			  <td><p><strong> YourTTS </strong></p>
+                            <audio id="player" controls><source src="audio/cs/en/sentence1/yourtts_CS_EN_937.wav" type="audio/wav"></audio>
+                          </td>
+
+			  <td><p><strong> ZCS-CDiff </strong></p>
+                            <audio id="player" controls><source src="audio/cs/en/sentence1/CDiff_CS_EN_937.wav" type="audio/wav"></audio>
+                          </td>
+
+                        </tr>
+			 </tr>
+                      </tbody>
+                    </table>
+
+
+
+                      <table class="table table-responsive align-content-center"  style="background-color: rgba(255, 255, 255, 0.993); border-radius: 20px">
+                      <thead>
+                        <tr >
+                       <th colspan="5"  style="width: 80%" ><em>Speaker's language in reference speech: English </em><p></p><p><em>Text: 在当前的市场环境下，staying competitive requires continuous innovation，这样才能保持行业的领先地位并满足客户的期望。</em></p>
+                       </th>
+                      </tr>
+
+                    </thead>
+                      <tbody>
+
+			  </tr>
+                          <td><p><strong> Reference </strong></p>
+                            <audio id="player" controls><source src="audio/cs/en/sentence2/p336_021_mic2.flac" type="audio/wav"></audio>
+                          </td>
+
+                          <td><p><strong> FastSpeech 2 </strong></p>
+                            <audio id="player" controls><source src="audio/cs/en/sentence2/fs2_CS_EN_3744.wav" type="audio/wav"></audio>
+                          </td>
+
+			  <td><p><strong> YourTTS </strong></p>
+                            <audio id="player" controls><source src="audio/cs/en/sentence2/yourtts_CS_EN_3744.wav" type="audio/wav"></audio>
+                          </td>
+
+			  <td><p><strong> ZCS-CDiff </strong></p>
+                            <audio id="player" controls><source src="audio/cs/en/sentence2/CDiff_CS_EN_3744.wav" type="audio/wav"></audio>
+                          </td>
+
+                        </tr>
+			 </tr>
+                      </tbody>
+                    </table>
+
+
+
+                 <table class="table table-responsive align-content-center"  style="background-color: rgba(255, 255, 255, 0.993); border-radius: 20px">
+                      <thead>
+                        <tr >
+                       <th colspan="5"  style="width: 80%" ><em>Speaker's language in reference speech: Chinese </em><p></p><p><em>Text: 我们可以一起去那个新的Japanese restaurant试试，听说那里的寿司非常正宗，而且环境也很舒适，适合聚会。</em></p>
+                       </th>
+                      </tr>
+
+                    </thead>
+                      <tbody>
+
+			  </tr>
+                          <td><p><strong> Reference </strong></p>
+                            <audio id="player" controls><source src="audio/cs/cn/sentence1/BAC009S0087W0337.wav" type="audio/wav"></audio>
+                          </td>
+
+                          <td><p><strong> FastSpeech 2 </strong></p>
+                            <audio id="player" controls><source src="audio/cs/cn/sentence1/fs2_CS_CN_476.wav" type="audio/wav"></audio>
+                          </td>
+
+			  <td><p><strong> YourTTS </strong></p>
+                            <audio id="player" controls><source src="audio/cs/cn/sentence1/yourtts_CS_CN_476.wav" type="audio/wav"></audio>
+                          </td>
+
+			  <td><p><strong> ZCS-CDiff </strong></p>
+                            <audio id="player" controls><source src="audio/cs/cn/sentence1/CDiff_CS_CN_476.wav" type="audio/wav"></audio>
+                          </td>
+
+                        </tr>
+			 </tr>
+                      </tbody>
+                    </table>
+
+
+
+
+               <table class="table table-responsive align-content-center"  style="background-color: rgba(255, 255, 255, 0.993); border-radius: 20px">
+                      <thead>
+                        <tr >
+                       <th colspan="5"  style="width: 80%" ><em>Speaker's language in reference speech: Chinese </em><p></p><p><em>Text: 昨天我们在公司讨论了关于the latest project的进展，这个项目的成功将对公司未来的发展起到至关重要的作用。</em></p>
+                       </th>
+                      </tr>
+
+                    </thead>
+                      <tbody>
+
+			  </tr>
+                          <td><p><strong> Reference </strong></p>
+                            <audio id="player" controls><source src="audio/cs/cn/sentence2/BAC009S0167W0280.wav" type="audio/wav"></audio>
+                          </td>
+
+                          <td><p><strong> FastSpeech 2 </strong></p>
+                            <audio id="player" controls><source src="audio/cs/cn/sentence2/fs2_CS_CN_601.wav" type="audio/wav"></audio>
+                          </td>
+
+			  <td><p><strong> YourTTS </strong></p>
+                            <audio id="player" controls><source src="audio/cs/cn/sentence2/yourtts_CS_CN_601.wav" type="audio/wav"></audio>
+                          </td>
+
+			  <td><p><strong> ZCS-CDiff </strong></p>
+                            <audio id="player" controls><source src="audio/cs/cn/sentence2/CDiff_CS_CN_601.wav" type="audio/wav"></audio>
+                          </td>
+
+                        </tr>
+			 </tr>
+                      </tbody>
+                    </table>
+
+
+                  </div>
+                </div>
+            </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="page-section bg-primary text-white mb-0" id="ablation">
+          <div class="container">
+            <div class="text-center">
+              <h2 class="page-section-heading d-inline-block">Ablation Study</h2>
+ <p class="pre-wrap lead">We use CW, SA, SD, and DM to represent the Conformer-based WaveNet, speaker-assist module, speech disentanglement, and diffusion model, respectively.</p>
+            </div>
+            <div class="divider-custom divider-light"></div>
+              <div class="row">
+                  <div class="col-lg-12 ml-auto">
+
+                    <table class="table table-responsive align-content-center"  style="background-color: rgba(255, 255, 255, 0.993); border-radius: 20px">
+                      <thead>
+                        <tr >
+                       <th colspan="5"  style="width: 80%" ><em>Speaker's language in reference speech: English </em><p></p><p><em>Text: 在全球化的背景下，understanding international relations变得尤为重要，尤其是在处理跨国事务和文化交流时。</em></p>
+                       </th>
+                      </tr>
+
+                    </thead>
+                      <tbody>
+
+              <tr>
+			  <td rowspan="1" style="vertical-align: top;"><p><strong>Reference</strong></p>
+                            <audio id="player" controls><source src="audio/ablation/en/sentence1/p259_370_mic2.flac" type="audio/wav"></audio>
+                          </td>
+
+                          <td rowspan="1" style="vertical-align: top;"><p><strong>ZCS-CDiff</strong></p>
+                            <audio id="player" controls><source src="audio/ablation/en/sentence1/CDiff_xiao_EN_4612.wav" type="audio/wav"></audio>
+                          </td>
+                         </tr>
+			  </tr>
+
+			  </tr>
+                          <td><p><strong> w/o CW </strong></p>
+                            <audio id="player" controls><source src="audio/ablation/en/sentence1/no_con_xiao_EN_4612.wav" type="audio/wav"></audio>
+                          </td>
+
+                          <td><p><strong> w/o SA </strong></p>
+                            <audio id="player" controls><source src="audio/ablation/en/sentence1/no_assi_xiao_EN_4612.wav" type="audio/wav"></audio>
+                          </td>
+
+			  <td><p><strong> w/o SD </strong></p>
+                            <audio id="player" controls><source src="audio/ablation/en/sentence1/no_sp_xiao_EN_4612.wav" type="audio/wav"></audio>
+                          </td>
+
+			  <td><p><strong> w/o DM </strong></p>
+                            <audio id="player" controls><source src="audio/ablation/en/sentence1/no_diff_xiao_EN_4612.wav" type="audio/wav"></audio>
+                          </td>
+
+                        </tr>
+			 </tr>
+                      </tbody>
+            </table>
+
+
+
+
+
+            <table class="table table-responsive align-content-center"  style="background-color: rgba(255, 255, 255, 0.993); border-radius: 20px">
+                      <thead>
+                        <tr >
+                       <th colspan="5"  style="width: 80%" ><em>Speaker's language in reference speech: English </em><p></p><p><em>Text: 最近我在研究how to create effective marketing strategies，学习如何通过分析数据和市场趋势，来制定具有竞争力的计划。</em></p>
+                       </th>
+                      </tr>
+
+                    </thead>
+                      <tbody>
+
+              <tr>
+			  <td rowspan="1" style="vertical-align: top;"><p><strong>Reference</strong></p>
+                            <audio id="player" controls><source src="audio/ablation/en/sentence2/p329_422_mic2.flac" type="audio/wav"></audio>
+                          </td>
+
+                          <td rowspan="1" style="vertical-align: top;"><p><strong>ZCS-CDiff</strong></p>
+                            <audio id="player" controls><source src="audio/ablation/en/sentence2/CDiff_xiao_EN_4934.wav" type="audio/wav"></audio>
+                          </td>
+                         </tr>
+			  </tr>
+
+			  </tr>
+                          <td><p><strong> w/o CW </strong></p>
+                            <audio id="player" controls><source src="audio/ablation/en/sentence2/no_con_xiao_EN_4934.wav" type="audio/wav"></audio>
+                          </td>
+
+                          <td><p><strong> w/o SA </strong></p>
+                            <audio id="player" controls><source src="audio/ablation/en/sentence2/no_assi_xiao_EN_4934.wav" type="audio/wav"></audio>
+                          </td>
+
+			  <td><p><strong> w/o SD </strong></p>
+                            <audio id="player" controls><source src="audio/ablation/en/sentence2/no_sp_xiao_EN_4934.wav" type="audio/wav"></audio>
+                          </td>
+
+			  <td><p><strong> w/o DM </strong></p>
+                            <audio id="player" controls><source src="audio/ablation/en/sentence2/no_diff_xiao_EN_4934.wav" type="audio/wav"></audio>
+                          </td>
+
+                        </tr>
+			 </tr>
+                      </tbody>
+            </table>
+
+
+
+
+            <table class="table table-responsive align-content-center"  style="background-color: rgba(255, 255, 255, 0.993); border-radius: 20px">
+                      <thead>
+                        <tr >
+                       <th colspan="5"  style="width: 80%" ><em>Speaker's language in reference speech: Chinese </em><p></p><p><em>Text: 他是一个非常喜欢adventure的人，经常去explore不同的地方，挑战自己，也因此积累了很多有趣的故事和经验。</em></p>
+                       </th>
+                      </tr>
+
+                    </thead>
+                      <tbody>
+
+              <tr>
+			  <td rowspan="1" style="vertical-align: top;"><p><strong>Reference</strong></p>
+                            <audio id="player" controls><source src="audio/ablation/cn/sentence1/BAC009S0354W0264.wav" type="audio/wav"></audio>
+                          </td>
+
+                          <td rowspan="1" style="vertical-align: top;"><p><strong>ZCS-CDiff</strong></p>
+                            <audio id="player" controls><source src="audio/ablation/cn/sentence1/CDiff_xiao_CN_160.wav" type="audio/wav"></audio>
+                          </td>
+                         </tr>
+			  </tr>
+
+			  </tr>
+                          <td><p><strong> w/o CW </strong></p>
+                            <audio id="player" controls><source src="audio/ablation/cn/sentence1/no_con_xiao_CN_160.wav" type="audio/wav"></audio>
+                          </td>
+
+                          <td><p><strong> w/o SA </strong></p>
+                            <audio id="player" controls><source src="audio/ablation/cn/sentence1/no_assi_xiao_CN_160.wav" type="audio/wav"></audio>
+                          </td>
+
+			  <td><p><strong> w/o SD </strong></p>
+                            <audio id="player" controls><source src="audio/ablation/cn/sentence1/no_sp_xiao_CN_160.wav" type="audio/wav"></audio>
+                          </td>
+
+			  <td><p><strong> w/o DM </strong></p>
+                            <audio id="player" controls><source src="audio/ablation/cn/sentence1/no_diff_xiao_CN_160.wav" type="audio/wav"></audio>
+                          </td>
+
+                        </tr>
+			 </tr>
+                      </tbody>
+            </table>
+
+
+
+
+
+            <table class="table table-responsive align-content-center"  style="background-color: rgba(255, 255, 255, 0.993); border-radius: 20px">
+                      <thead>
+                        <tr >
+                       <th colspan="5"  style="width: 80%" ><em>Speaker's language in reference speech: Chinese </em><p></p><p><em>Text: 我们正在讨论如何通过innovative approaches来解决当前面临的市场挑战，并寻找新的增长机会。</em></p>
+                       </th>
+                      </tr>
+
+                    </thead>
+                      <tbody>
+
+              <tr>
+			  <td rowspan="1" style="vertical-align: top;"><p><strong>Reference</strong></p>
+                            <audio id="player" controls><source src="audio/ablation/cn/sentence2/BAC009S0027W0300.wav" type="audio/wav"></audio>
+                          </td>
+
+                          <td rowspan="1" style="vertical-align: top;"><p><strong>ZCS-CDiff</strong></p>
+                            <audio id="player" controls><source src="audio/ablation/cn/sentence2/CDiff_xiao_CN_1918.wav" type="audio/wav"></audio>
+                          </td>
+                         </tr>
+			  </tr>
+
+			  </tr>
+                          <td><p><strong> w/o CW </strong></p>
+                            <audio id="player" controls><source src="audio/ablation/cn/sentence2/no_con_xiao_CN_1918.wav" type="audio/wav"></audio>
+                          </td>
+
+                          <td><p><strong> w/o SA </strong></p>
+                            <audio id="player" controls><source src="audio/ablation/cn/sentence2/no_assi_xiao_CN_1918.wav" type="audio/wav"></audio>
+                          </td>
+
+			  <td><p><strong> w/o SD </strong></p>
+                            <audio id="player" controls><source src="audio/ablation/cn/sentence2/no_sp_xiao_CN_1918.wav" type="audio/wav"></audio>
+                          </td>
+
+			  <td><p><strong> w/o DM </strong></p>
+                            <audio id="player" controls><source src="audio/ablation/cn/sentence2/no_diff_xiao_CN_1918.wav" type="audio/wav"></audio>
+                          </td>
+
+                        </tr>
+			 </tr>
+                      </tbody>
+            </table>
+
+                      
+                  </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="scroll-to-top d-lg-none position-fixed"><a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top"><i class="fa fa-chevron-up"></i></a></div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        
+        <!-- Third party plugin JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+        <script src="js/scripts.js"></script>
+        
+        <!-- Bootstrap slider JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/bootstrap-slider.min.js" integrity="sha512-f0VlzJbcEB6KiW8ZVtL+5HWPDyW1+nJEjguZ5IVnSQkvZbwBt2RfCBY0CBO1PsMAqxxrG4Di6TfsCPP3ZRwKpA==" crossorigin="anonymous"></script>
+
+        <!-- slider JS -->
+        <script type="text/javascript">
+        </script>
+
+
+    </body>
+</html>
+
+<style>
+  .topScrollButton {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    border-radius: 15px;
+    color: #ffffff;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    font-size: 50px;
+    font-weight: bold;
+    /*background-color: rgba(50,50,50,0.5);*/
+    background-color:#323232;
+    opacity:0.5;
+    filter:alpha(opacity=50);
+    z-index: 999;
+    cursor: pointer;
+    display: none; }
+    .topScrollButton:hover{background-color:#0f4c81
+  }
+
+  .noborder{
+          border: none!important;
+    }
+  .grid-image {
+      display:flex;
+      flex-wrap:wrap;
+      align-items:flex-start;
+      margin:30px 0;
+  }
+  .grid-image img {
+      width:calc(33.333% - 10px);
+      margin:0 15px 15px 0;
+  }
+  .grid-image img:nth-of-type(3n),
+  .grid-image img:last-child {
+      margin-right:0;
+  }
+  @media screen and (max-width:640px){
+    .grid-image img {
+      width:calc(50% - 15px);
+    }
+  }
+  @media screen and (max-width:480px){
+    .grid-image img:nth-of-type(2n) {
+      margin-right:0;
+    }
+    .grid-image img:nth-of-type(3n) {
+      margin-right:15px;
+    }
+  }
+  </style>
+
+  

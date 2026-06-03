@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comparison of Speech Synthesis of Six Speech Models</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f0f5;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 30px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #003366;
+      margin-bottom: 15px;
+      font-size: 36px;
+    }
+
+    .summary {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      color: #666;
+      font-size: 18px;
+      line-height: 1.7;
+      font-weight: normal;
+    }
+
+    .model {
+      background-color: #fff;
+      margin: 20px 0;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #007BFF;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .audio-group {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 25px;
+      margin-top: 20px;
+    }
+
+    .audio-group audio {
+      margin: 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    .audio-description {
+      text-align: center;
+      font-size: 14px;
+      color: #555;
+      margin-top: 5px;
+    }
+
+    .model-name {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 22px;
+      font-weight: bold;
+      color: #003366;
+    }
+
+    .model-description {
+      text-align: center;
+      font-size: 16px;
+      color: #555;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .audio-group {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Zero-shot Speech Synthesis for Uyghur Language among Six Different Models</h1>
+
+    <!-- Summary Section -->
+    <div class="summary">
+      <p>This webpage provides a detailed comparison of six speech synthesis models. The models are evaluated based on audio samples produced by each model using the same input text. Users can listen to the samples and assess the differences in speech quality across different models. The models included are FastSpeech2, Grad-TTS, vits1, vits2, RAW, and XLMR, representing various approaches in the field of speech synthesis. Below you can find audio samples of each model, showcasing their unique characteristics.</p>
+    </div>
+
+    <!-- Model 1 -->
+    <div class="model">
+      <div class="model-name">Model 1: FastSpeech2</div>
+      <div class="audio-group">
+        <div>
+          <audio controls>
+            <source src="chenke_ug_fs2_new_25/fs2_UG_FS2_textThuyg25.txt_ug_1.wav" type="audio/wav">
+            Your browser does not support the audio element.
+          </audio>
+          <div class="audio-description">ئىككى خىل ئېلېمېنتنى ئارىلاشتۇرسا خىمىيىلىك رېئاكسىيە يۈز بېرىدۇ</div>
+        </div>
+        <div>
+          <audio controls>
+            <source src="chenke_ug_fs2_new_25/fs2_UG_FS2_textThuyg25.txt_ug_10.wav" type="audio/wav">
+            Your browser does not support the audio element.
+          </audio>
+          <div class="audio-description">كۆپچىلىك بىلەن بىرگە تۈگۈر تۈگۈپ ، چاغاننى تەبرىكلىسە ياخشى بولىدىكەن</div>
+        </div>
+        <div>
+          <audio controls>
+            <source src="chenke_ug_fs2_new_25/fs2_UG_FS2_textThuyg25.txt_ug_15.wav">
+            Your browser does not support the audio element.
+          </audio>
+          <div class="audio-description">ئۇ ياش بولغاچقا بۇ مەسىلىنى بەك ئاددىي ئويلاپتۇ</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Model 2 -->
+    <div class="model">
+      <div class="model-name">Model 2: Grad-TTS</div>
+      <div class="audio-group">
+        <div>
+          <audio controls>
+            <source src="chenke_ug_Grad-TTS_new_25/grad_UYG_textThuyg25.txt_ug_1.wav" type="audio/wav">
+            Your browser does not support the audio element.
+          </audio>
+          <div class="audio-description">ئىككى خىل ئېلېمېنتنى ئارىلاشتۇرسا خىمىيىلىك رېئاكسىيە يۈز بېرىدۇ</div>
+        </div>
+        <div>
+          <audio controls>
+            <source src="chenke_ug_Grad-TTS_new_25/grad_UYG_textThuyg25.txt_ug_10.wav" type="audio/wav">
+            Your browser does not support the audio element.
+          </audio>
+          <div class="audio-description">كۆپچىلىك بىلەن بىرگە تۈگۈر تۈگۈپ ، چاغاننى تەبرىكلىسە ياخشى بولىدىكەن</div>
+        </div>
+        <div>
+          <audio controls>
+            <source src="chenke_ug_Grad-TTS_new_25/grad_UYG_textThuyg25.txt_ug_15.wav" type="audio/wav">
+            Your browser does not support the audio element.
+          </audio>
+          <div class="audio-description">ئۇ ياش بولغاچقا بۇ مەسىلىنى بەك ئاددىي ئويلاپتۇ</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Model 3 -->
+    <div class="model">
+      <div class="model-name">Model 3: vits1</div>
+      <div class="audio-group">
+        <div>
+          <audio controls>
+            <source src="chenke_ug_vits1_new_25/vits1_UYG_textThuyg25.txt_ug_1.wav" type="audio/wav">
+            Your browser does not support the audio element.
+          </audio>
+          <div class="audio-description">ئىككى خىل ئېلېمېنتنى ئارىلاشتۇرسا خىمىيىلىك رېئاكسىيە يۈز بېرىدۇ</div>
+        </div>
+        <div>
+          <audio controls>
+            <source src="chenke_ug_vits1_new_25/vits1_UYG_textThuyg25.txt_ug_10.wav" type="audio/wav">
+            Your browser does not support the audio element.
+          </audio>
+          <div class="audio-description">كۆپچىلىك بىلەن بىرگە تۈگۈر تۈگۈپ ، چاغاننى تەبرىكلىسە ياخشى بولىدىكەن</div>
+        </div>
+        <div>
+          <audio controls>
+            <source src="chenke_ug_vits1_new_25/vits1_UYG_textThuyg25.txt_ug_15.wav" type="audio/wav">
+            Your browser does not support the audio element.
+          </audio>
+          <div class="audio-description">ئۇ ياش بولغاچقا بۇ مەسىلىنى بەك ئاددىي ئويلاپتۇ</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Model 4 -->
+    <div class="model">
+      <div class="model-name">Model 4: vits2</div>
+      <div class="audio-group">
+        <div>
+          <audio controls>
+            <source src="uyg_vits2_newug25_20240910/0.wav" type="audio/wav">
+            Your browser does not support the audio element.
+          </audio>
+          <div class="audio-description">ئىككى خىل ئېلېمېنتنى ئارىلاشتۇرسا خىمىيىلىك رېئاكسىيە يۈز بېرىدۇ</div>
+        </div>
+        <div>
+          <audio controls>
+            <source src="uyg_vits2_newug25_20240910/9.wav" type="audio/wav">
+            Your browser does not support the audio element.
+          </audio>
+          <div class="audio-description">كۆپچىلىك بىلەن بىرگە تۈگۈر تۈگۈپ ، چاغاننى تەبرىكلىسە ياخشى بولىدىكەن</div>
+        </div>
+        <div>
+          <audio controls>
+            <source src="uyg_vits2_newug25_20240910/14.wav" type="audio/wav">
+            Your browser does not support the audio element.
+          </audio>
+          <div class="audio-description">ئۇ ياش بولغاچقا بۇ مەسىلىنى بەك ئاددىي ئويلاپتۇ</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Model 5 -->
+    <div class="model">
+      <div class="model-name">Model 5: RAW</div>
+      <div class="audio-group">
+        <div>
+          <audio controls>
+            <source src="RAW_UYG_20240910/RAW_UYG_ug_1.wav" type="audio/wav">
+            Your browser does not support the audio element.
+          </audio>
+          <div class="audio-description">ئىككى خىل ئېلېمېنتنى ئارىلاشتۇرسا خىمىيىلىك رېئاكسىيە يۈز بېرىدۇ</div>
+        </div>
+        <div>
+          <audio controls>
+            <source src="RAW_UYG_20240910/RAW_UYG_ug_10.wav" type="audio/wav">
+            Your browser does not support the audio element.
+          </audio>
+          <div class="audio-description">كۆپچىلىك بىلەن بىرگە تۈگۈر تۈگۈپ ، چاغاننى تەبرىكلىسە ياخشى بولىدىكەن</div>
+        </div>
+        <div>
+          <audio controls>
+            <source src="RAW_UYG_20240910/RAW_UYG_ug_15.wav" type="audio/wav">
+            Your browser does not support the audio element.
+          </audio>
+          <div class="audio-description">ئۇ ياش بولغاچقا بۇ مەسىلىنى بەك ئاددىي ئويلاپتۇ</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Model 6 -->
+    <div class="model">
+      <div class="model-name">Model 6: XLMR</div>
+      <div class="audio-group">
+        <div>
+          <audio controls>
+            <source src="XLMR_UYG_20240910/XLMR_UYG_ug_1.wav" type="audio/wav">
+            Your browser does not support the audio element.
+          </audio>
+          <div class="audio-description">ئىككى خىل ئېلېمېنتنى ئارىلاشتۇرسا خىمىيىلىك رېئاكسىيە يۈز بېرىدۇ</div>
+        </div>
+        <div>
+          <audio controls>
+            <source src="XLMR_UYG_20240910/XLMR_UYG_ug_10.wav" type="audio/wav">
+            Your browser does not support the audio element.
+          </audio>
+          <div class="audio-description">كۆپچىلىك بىلەن بىرگە تۈگۈر تۈگۈپ ، چاغاننى تەبرىكلىسە ياخشى بولىدىكەن</div>
+        </div>
+        <div>
+          <audio controls>
+            <source src="XLMR_UYG_20240910/XLMR_UYG_ug_15.wav" type="audio/wav">
+            Your browser does not support the audio element.
+          </audio>
+          <div class="audio-description">ئۇ ياش بولغاچقا بۇ مەسىلىنى بەك ئاددىي ئويلاپتۇ</div>
+      </div>
+      </div>
+
+  </div>
+</body>
+</html>

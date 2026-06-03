@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UnitDiff Audio Demo</title>
+    <style>
+      :root {
+        --ink: #16201b;
+        --muted: #61706a;
+        --bg: #f5f7f6;
+        --surface: #ffffff;
+        --line: #d9e2dd;
+        --teal: #087c70;
+        --coral: #c4553e;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--bg);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+        letter-spacing: 0;
+      }
+
+      header,
+      main {
+        padding: 36px 5vw;
+      }
+
+      header {
+        border-bottom: 1px solid var(--line);
+        background: var(--surface);
+      }
+
+      h1 {
+        margin: 0 0 14px;
+        max-width: 960px;
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        line-height: 1.1;
+      }
+
+      p {
+        margin-top: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .lead {
+        max-width: 900px;
+        font-size: 1.05rem;
+      }
+
+      .demo-grid {
+        display: grid;
+        gap: 18px;
+      }
+
+      .demo-card {
+        padding: 20px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface);
+      }
+
+      .demo-card h2 {
+        margin: 0 0 10px;
+        font-size: 1.16rem;
+      }
+
+      .track-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 16px;
+      }
+
+      .track {
+        display: grid;
+        gap: 10px;
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fbfcfb;
+      }
+
+      .track span {
+        color: var(--teal);
+        font-size: 0.86rem;
+        font-weight: 760;
+      }
+
+      audio {
+        width: 100%;
+      }
+
+      .tag {
+        display: inline-flex;
+        margin-bottom: 12px;
+        padding: 5px 8px;
+        border-radius: 6px;
+        background: rgba(196, 85, 62, 0.1);
+        color: var(--coral);
+        font-size: 0.78rem;
+        font-weight: 760;
+      }
+
+      @media (max-width: 760px) {
+        .track-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <span class="tag">UnitDiff · Code-Switching Speech Synthesis</span>
+      <h1>UnitDiff Audio Demo</h1>
+      <p class="lead">
+        UnitDiff is a unit-diffusion model for code-switching speech synthesis. This local HTML page mirrors the original GitHub Pages demo content with directly playable audio samples.
+      </p>
+    </header>
+
+    <main class="demo-grid">
+      <article class="demo-card">
+        <h2>Intra-lingual synthesis · Chinese</h2>
+        <p>最终，中国男子乒乓球队获得此奖项。</p>
+        <div class="track-grid">
+          <div class="track">
+            <span>YourTTS</span>
+            <audio controls preload="none" src="zh/MOS/CN/IN/MOS_IN_CN_yourtts_text_02.wav"></audio>
+          </div>
+          <div class="track">
+            <span>PPG-model</span>
+            <audio controls preload="none" src="zh/MOS/CN/IN/MOS_IN_CN_ppg_model_02.wav"></audio>
+          </div>
+          <div class="track">
+            <span>UnitDiff</span>
+            <audio controls preload="none" src="zh/MOS/CN/IN/MOS_IN_CN_unitdiff_02.wav"></audio>
+          </div>
+        </div>
+      </article>
+
+      <article class="demo-card">
+        <h2>Cross-lingual synthesis · English speaker to Chinese text</h2>
+        <p>恭祝大家新春愉快！身体健康！万事顺遂！阖家幸福！</p>
+        <div class="track-grid">
+          <div class="track">
+            <span>YourTTS</span>
+            <audio controls preload="none" src="zh/MOS/EN/cross/MOS_Cross_EN_yourtts_text_03.wav"></audio>
+          </div>
+          <div class="track">
+            <span>PPG-model</span>
+            <audio controls preload="none" src="zh/MOS/EN/cross/MOS_Cross_EN_ppg_model_03.wav"></audio>
+          </div>
+          <div class="track">
+            <span>UnitDiff</span>
+            <audio controls preload="none" src="zh/MOS/EN/cross/MOS_Cross_EN_unitdiff_03.wav"></audio>
+          </div>
+        </div>
+      </article>
+
+      <article class="demo-card">
+        <h2>Code-switching synthesis · Mandarin speaker</h2>
+        <p>我今天在home超级happy. 你今天过得怎么样？Do you have any plan to go to 学校?</p>
+        <div class="track-grid">
+          <div class="track">
+            <span>YourTTS</span>
+            <audio controls preload="none" src="zh/MOS/CN/CS/MOS_CS_CN_yourtts_text_01.wav"></audio>
+          </div>
+          <div class="track">
+            <span>PPG-model</span>
+            <audio controls preload="none" src="zh/MOS/CN/CS/MOS_CS_CN_ppg_model_01.wav"></audio>
+          </div>
+          <div class="track">
+            <span>UnitDiff</span>
+            <audio controls preload="none" src="zh/MOS/CN/CS/MOS_CS_CN_unitdiff_01.wav"></audio>
+          </div>
+        </div>
+      </article>
+
+      <article class="demo-card">
+        <h2>Ablation</h2>
+        <p>这个源于拳击运动的表达 “to punch above your weight”的本意是“能和高于自己重量级别的对手较量”。</p>
+        <div class="track-grid">
+          <div class="track">
+            <span>UnitDiff</span>
+            <audio controls preload="none" src="zh/xiao/xiaorong_unitdiff_01.wav"></audio>
+          </div>
+          <div class="track">
+            <span>w/o UP</span>
+            <audio controls preload="none" src="zh/xiao/xiaorong_unitdiff_no_UP_01.wav"></audio>
+          </div>
+          <div class="track">
+            <span>YourTTS</span>
+            <audio controls preload="none" src="zh/xiao/xiaorong_yourtts_01.wav"></audio>
+          </div>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

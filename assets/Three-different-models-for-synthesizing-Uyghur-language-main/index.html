@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comparison of Speech Synthesis of Six Speech Models</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* 页面头部样式 */
+    .page-header {
+      background-color: #157878;
+      padding: 30px 0;
+      text-align: center;
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+
+    }
+
+    /* 页面主要内容样式 */
+    .main-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* 标题样式 */
+    h1 {
+      text-align: center;
+      color: #157878;
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    /* 摘要样式 */
+    .summary {
+      background-color: #eaf0f0;
+      border-left: 4px solid #157878;
+      padding: 20px;
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+
+    /* 表格样式 */
+    .tg {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 30px;
+    }
+
+    .tg td, .tg th {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .tg th {
+      background-color: #f2f2f2;
+      color: #157878;
+    }
+
+    .table-container {
+      overflow-x: auto;
+    }
+
+    /* 媒体查询：适应小屏设备 */
+    @media screen and (max-width: 768px) {
+      h1 {
+        font-size: 28px;
+      }
+
+      .summary {
+        font-size: 14px;
+      }
+
+      .tg td, .tg th {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <section class="page-header">
+
+  </section>
+
+  <section class="main-content">
+    <h1>Zero-shot Speech Synthesis for Uyghur Language among Three Different Models</h1>
+
+    <div class="summary">
+      <p>
+        This demo mainly includes zero-shot speech synthesis for the Uyghur language under three different models, including Fastspeech2, YourTTS, and MDDM, and conducted experiments among Chinese, English, and Ugandan languages. This paper presents the synthesis effects of different models on multiple speech samples and conducts a detailed comparative analysis.
+      </p>
+    </div>
+
+    <div class="table-container">
+      <table class="tg">
+        <thead>
+          <tr>
+            <th style="text-align: center">Scenario</th>
+            <th style="text-align: center">Reference Sample</th>
+            <th style="text-align: center">Fastspeech2</th>
+            <th style="text-align: center">YourTTS</th>
+            <th style="text-align: center">MDDM</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- CN-UG -->
+          <tr>
+            <td style="text-align: center" rowspan="6">CN-UG</td>
+            <td style="text-align: center" rowspan="2"><audio controls preload src="zhy_CN_fs2_ref/fs2_UG_textThuyg20.txt_ref_1.wav"></audio></td>
+            <td style="text-align: center" colspan="3">ئىككى خىل ئېلېمېنتنى ئارىلاشتۇرسا خىمىيىلىك رېئاكسىيە يۈز بېرىدۇ.</td>
+          </tr>
+          <tr>
+            <td style="text-align: center"><audio controls preload src="zhy_CN-UG_fs2_gen/fs2_UG_textThuyg20.txt_gen_1.wav"></audio></td>
+            <td style="text-align: center"><audio controls preload src="zhy_CN-UG_MDDM_gen/MDDM_UG_textThuyg20.txt_gen_1.wav"></audio></td>
+            <td style="text-align: center"><audio controls preload src="zhy_CN-UG_yourtts_gen/yourtts_UG_textThuyg20.txt_gen_1.wav"></audio></td>
+          </tr>
+          <tr>
+            <td style="text-align: center" rowspan="2"><audio controls preload src="zhy_CN_fs2_ref/fs2_UG_textThuyg20.txt_ref_7.wav"></audio></td>
+            <td style="text-align: center" colspan="3">بۇ يىل ھۆل يېغىن ياخشى بولغانلىقتىن زىرائەتلەرنىڭ دېنى ناھايىتى توق بولدى.</td>
+          </tr>
+          <tr>
+            <td style="text-align: center"><audio controls preload src="zhy_CN-UG_fs2_gen/fs2_UG_textThuyg20.txt_gen_7.wav"></audio></td>
+            <td style="text-align: center"><audio controls preload src="zhy_CN-UG_yourtts_gen/yourtts_UG_textThuyg20.txt_gen_7.wav"></audio></td>
+            <td style="text-align: center"><audio controls preload src="zhy_CN-UG_MDDM_gen/MDDM_UG_textThuyg20.txt_gen_7.wav"></audio></td>
+          </tr>
+          <tr>
+            <td style="text-align: center" rowspan="2"><audio controls preload src="zhy_CN_fs2_ref/fs2_UG_textThuyg20.txt_ref_5.wav"></audio></td>
+            <td style="text-align: center" colspan="3">Text:بۇ پەقەت سودا ئۇرۇشىنى قوزغايدۇ ، ئىقتىسادنىڭ چېكىنىشىنى كەسكىنلەشتۈرىۋېتىدۇ.</td>
+          </tr>
+          <tr>
+            <td style="text-align: center"><audio controls preload src="zhy_CN-UG_fs2_gen/fs2_UG_textThuyg20.txt_gen_5.wav"></audio></td>
+            <td style="text-align: center"><audio controls preload src="zhy_CN-UG_yourtts_gen/yourtts_UG_textThuyg20.txt_gen_5.wav"></audio></td>
+            <td style="text-align: center"><audio controls preload src="zhy_CN-UG_MDDM_gen/MDDM_UG_textThuyg20.txt_gen_5.wav"></audio></td>
+          </tr>
+
+          <!-- EN-UG -->
+          <tr>
+            <td style="text-align: center" rowspan="6">EN-UG</td>
+            <td style="text-align: center" rowspan="2"><audio controls preload src="zhy_EN_fs2_ref/fs2_UG_textThuyg20.txt_ref_3.wav"></audio></td>
+            <td style="text-align: center" colspan="3">كەچ سائەت يەتتىلەردە بالىلار مۇزىيغا كىرىپلا خوشال بولۇپ كەتتى.</td>
+          </tr>
+          <tr>
+            <td style="text-align: center"><audio controls preload src="zhy_EN-UG_fs2_gen/fs2_UG_textThuyg20.txt_gen_3.wav"></audio></td>
+            <td style="text-align: center"><audio controls preload src="zhy_EN-UG_yourtts_gen/yourtts_UG_textThuyg20.txt_ug_gen_3.wav"></audio></td>
+            <td style="text-align: center"><audio controls preload src="zhy_EN-UG_MDDM_gen/MDDM_UG_textThuyg20.txt_gen_3.wav"></audio></td>
+          </tr>
+          <tr>
+            <td style="text-align: center" rowspan="2"><audio controls preload src="zhy_EN_fs2_ref/fs2_UG_textThuyg20.txt_ref_5.wav"></audio></td>
+            <td style="text-align: center" colspan="3">بۇ پەقەت سودا ئۇرۇشىنى قوزغايدۇ ، ئىقتىسادنىڭ چېكىنىشىنى كەسكىنلەشتۈرىۋېتىدۇ.</td>
+          </tr>
+          <tr>
+            <td style="text-align: center"><audio controls preload src="zhy_EN-UG_fs2_gen/fs2_UG_textThuyg20.txt_gen_5.wav"></audio></td>
+            <td style="text-align: center"><audio controls preload src="zhy_EN-UG_yourtts_gen/yourtts_UG_textThuyg20.txt_ug_gen_5.wav"></audio></td>
+            <td style="text-align: center"><audio controls preload src="zhy_EN-UG_MDDM_gen/MDDM_UG_textThuyg20.txt_gen_5.wav"></audio></td>
+          </tr>
+          <tr>
+            <td style="text-align: center" rowspan="2"><audio controls preload src="zhy_EN_fs2_ref/fs2_UG_textThuyg20.txt_ref_7.wav"></audio></td>
+            <td style="text-align: center" colspan="3">بۇ يىل ھۆل يېغىن ياخشى بولغانلىقتىن زىرائەتلەرنىڭ دېنى ناھايىتى توق بولدى.</td>
+          </tr>
+          <tr>
+            <td style="text-align: center"><audio controls preload src="zhy_EN-UG_fs2_gen/fs2_UG_textThuyg20.txt_gen_7.wav"></audio></td>
+            <td style="text-align: center"><audio controls preload src="zhy_EN-UG_yourtts_gen/yourtts_UG_textThuyg20.txt_ug_gen_7.wav"></audio></td>
+            <td style="text-align: center"><audio controls preload src="zhy_EN-UG_MDDM_gen/MDDM_UG_textThuyg20.txt_gen_7.wav"></audio></td>
+          </tr>
+
+          <!-- UG-UG -->
+          <tr>
+            <td style="text-align: center" rowspan="6">UG-UG</td>
+            <td style="text-align: center" rowspan="2"><audio controls preload src="zhy_UG_fs2_ref/fs2_UG_textThuyg20.txt_ref_10.wav"></audio></td>
+            <td style="text-align: center" colspan="3">Text: كۆپچىلىك بىلەن بىرگە تۈگۈر تۈگۈپ ، چاغاننى تەبرىكلىسە ياخشى بولىدىكەن.</td>
+          </tr>
+          <tr>        
+            <td style="text-align: center"><audio controls preload src="zhy_UG-UG_fs2_gen/fs2_UG_textThuyg20.txt_gen_10.wav"></audio></td>
+            <td style="text-align: center"><audio controls preload src="zhy_UG-UG_yourtts_gen/yourtts_UG_textThuyg20.txt_ug_gen_10.wav"></audio></td>
+            <td style="text-align: center"><audio controls preload src="zhy_UG-UG_MDDM_gen/MDDM_UG_textThuyg20.txt_gen_10.wav"></audio></td>
+          </tr>
+          <tr>
+            <td style="text-align: center" rowspan="2"><audio controls preload src="zhy_UG_fs2_ref/fs2_UG_textThuyg20.txt_ref_12.wav"></audio></td>
+            <td style="text-align: center" colspan="3">ئۇنىڭدىن باشقا يەنە نۇرغۇن ساختا ماركىلىق سىلىقلاش مايلىرى ۋە تۇرمۇز مايلىرىنىمۇ بايقىدى.</td>
+          </tr>
+          <tr>
+            <td style="text-align: center"><audio controls preload src="zhy_UG-UG_fs2_gen/fs2_UG_textThuyg20.txt_gen_12.wav"></audio></td>
+            <td style="text-align: center"><audio controls preload src="zhy_UG-UG_yourtts_gen/yourtts_UG_textThuyg20.txt_ug_gen_12.wav"></audio></td>
+            <td style="text-align: center"><audio controls preload src="zhy_UG-UG_MDDM_gen/MDDM_UG_textThuyg20.txt_gen_12.wav"></audio></td>
+          </tr>
+          <tr>
+            <td style="text-align: center" rowspan="2"><audio controls preload src="zhy_UG_fs2_ref/fs2_UG_textThuyg20.txt_ref_9.wav"></audio></td>
+            <td style="text-align: center" colspan="3">بىز ئوندەك ئائىلىلىك بىللە بېرىپ ئاپتۇموبىل سېتىۋالدۇق.</td>
+          </tr>
+          <tr>
+            <td style="text-align: center"><audio controls preload src="zhy_UG-UG_fs2_gen/fs2_UG_textThuyg20.txt_gen_9.wav"></audio></td>
+            <td style="text-align: center"><audio controls preload src="zhy_UG-UG_yourtts_gen/yourtts_UG_textThuyg20.txt_ug_gen_9.wav"></audio></td>
+            <td style="text-align: center"><audio controls preload src="zhy_UG-UG_MDDM_gen/MDDM_UG_textThuyg20.txt_gen_9.wav"></audio></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</body>
+
+</html>
