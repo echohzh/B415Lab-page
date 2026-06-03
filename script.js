@@ -73,8 +73,8 @@ const directions = [
         kind: "Demo + 开源代码",
         title: "Td-SENet",
         description:
-          "面向跨语言和低信噪比场景的语音增强模型，强调局部特征建模与高频信息保持。",
-        result: "覆盖跨语言增强、低信噪比增强和 THCHS+DNS 对比试听。",
+          "面向跨语言和低信噪比场景的三重解码器语音增强模型，强化局部特征建模与高频信息保留。",
+        result: "涵盖训练、推理及评估，提供汉语对比试听。",
         tags: ["Cross-lingual", "Low-SNR", "High-frequency", "THCHS+DNS"],
         year: "2025",
         repoPath: "assets/TdSENet-main/",
@@ -86,7 +86,7 @@ const directions = [
         samples: [
           {
             title: "Mandarin sample B7_278",
-            text: "普通话低信噪比增强样例，对比 noisy、clean 与 Td-SENet 输出。",
+            text: "-9dB信噪比下的普通话语音增强效果，对比带噪语音（Noisy）、干净语音（Clean） 与 Td-SENet 输出。",
             tracks: [
               { label: "Noisy -9 dB", src: "assets/TdSENet-main/B7_278/B7_278_-9dB.wav" },
               { label: "Clean", src: "assets/TdSENet-main/B7_278/B7_278 clean.wav" },
@@ -95,7 +95,7 @@ const directions = [
           },
           {
             title: "Mandarin sample A4_204",
-            text: "复杂噪声环境下增强对比样例。",
+            text: "极端噪声环境下增强对比样例。",
             tracks: [
               { label: "Noisy -9 dB", src: "assets/TdSENet-main/A4_204/A4_204_-9dB.wav" },
               { label: "Clean", src: "assets/TdSENet-main/A4_204/A4_204 clean.wav" },
@@ -110,7 +110,7 @@ const directions = [
         title: "M-CMGAN",
         description:
           "在 CMGAN 框架中引入 Time-Mamba-Frequency-Conformer、通道特征分支与频率调制模块，用于复杂噪声下的单通道语音增强。",
-        result: "支持训练、推理、DNS400 批量评估和客观指标计算。",
+        result: "支持训练、推理和客观指标计算。",
         tags: ["CMGAN", "Mamba", "Conformer", "DNSMOS"],
         year: "2024",
         repoPath: "assets/M-CMGAN/",
@@ -592,7 +592,7 @@ function drawSignalCanvas(canvas, phaseOffset = 0) {
 
     ctx.fillStyle = "rgba(255, 255, 255, 0.72)";
     ctx.font = "700 12px Inter, system-ui, sans-serif";
-    ctx.fillText("speech enhancement / synthesis", 20, 30);
+    ctx.fillText("XINJIANG UNIVERSITY · SPEECH LANGUAGE", 20, 30);
     ctx.fillText("B405 & B415", width - 108, 30);
 
     window.requestAnimationFrame(draw);
