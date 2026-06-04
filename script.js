@@ -592,7 +592,7 @@ function drawSignalCanvas(canvas, phaseOffset = 0) {
 
     ctx.fillStyle = "rgba(255, 255, 255, 0.72)";
     ctx.font = "700 12px Inter, system-ui, sans-serif";
-    ctx.fillText("XINJIANG UNIVERSITY · SPEECH LANGUAGE Processing", 20, 30);
+    ctx.fillText("XINJIANG UNIVERSITY · SPEECH LANGUAGE PROCESSING", 20, 30);
     ctx.fillText("B405 & B415", width - 108, 30);
 
     window.requestAnimationFrame(draw);
