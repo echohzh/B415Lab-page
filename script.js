@@ -27,8 +27,7 @@ const directions = [
         repoPath: "assets/DyTSwiG-SE-main/",
         links: [
           { label: "查看 Demo", url: "assets/DyTSwiG-SE-main/index.html" },
-          { label: "开源代码", url: "assets/DyTSwiG-SE-main/DyTSwiG-SE-Main/" },
-          { label: "README", url: "assets/DyTSwiG-SE-main/README_CN.md" }
+          { label: "开源代码", url: "https://github.com/Yj-Xiong/DyTSwiG-SE" },
         ],
         samples: [
           {
@@ -80,8 +79,7 @@ const directions = [
         repoPath: "assets/TdSENet-main/",
         links: [
           { label: "查看 Demo", url: "assets/TdSENet-main/index.html" },
-          { label: "开源代码", url: "assets/TdSENet-main/" },
-          { label: "README", url: "assets/TdSENet-main/README_CN.md" }
+          { label: "开源代码", url: "https://github.com/Yj-Xiong/TdSENet" },
         ],
         samples: [
           {
@@ -237,7 +235,6 @@ const directions = [
         repoPath: "assets/Six-different-models-for-synthesizing-Uyghur-language-main/",
         links: [
           { label: "查看 Demo", url: "assets/Six-different-models-for-synthesizing-Uyghur-language-main/index.html" },
-          { label: "README", url: "assets/Six-different-models-for-synthesizing-Uyghur-language-main/README.md" }
         ],
         samples: [
           {
@@ -272,7 +269,6 @@ const directions = [
         repoPath: "assets/Three-different-models-for-synthesizing-Uyghur-language-main/",
         links: [
           { label: "查看 Demo", url: "assets/Three-different-models-for-synthesizing-Uyghur-language-main/index.html" },
-          { label: "README", url: "assets/Three-different-models-for-synthesizing-Uyghur-language-main/README.md" }
         ],
         samples: [
           {
