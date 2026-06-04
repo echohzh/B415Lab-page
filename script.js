@@ -115,7 +115,7 @@ const directions = [
         year: "2024",
         repoPath: "assets/M-CMGAN/",
         links: [
-          { label: "开源代码", url: "assets/M-CMGAN/" },
+          { label: "开源代码", url: "https://github.com/Yj-Xiong/M-CMGAN" },
           { label: "README", url: "assets/M-CMGAN/README.md" }
         ]
       }
