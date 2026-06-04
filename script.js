@@ -1,5 +1,5 @@
 const labInfo = {
-  name: "B415课题组",
+  name: "新疆大学语音感知与智能计算实验室",
   subtitle: "语音语言与音频信号处理",
   office: "新疆大学博达校区信息楼 B405 & B415",
   emails: ["zhhuang@xju.edu.cn", "echohzh@163.com"],
