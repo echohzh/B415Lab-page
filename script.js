@@ -27,7 +27,7 @@ const directions = [
         repoPath: "assets/DyTSwiG-SE-main/",
         links: [
           { label: "查看 Demo", url: "assets/DyTSwiG-SE-main/index.html" },
-          { label: "开源代码", url: "https://github.com/Yj-Xiong/DyTSwiG-SE" },
+          { label: "Code", url: "https://github.com/Yj-Xiong/DyTSwiG-SE" },
         ],
         samples: [
           {
@@ -79,7 +79,7 @@ const directions = [
         repoPath: "assets/TdSENet-main/",
         links: [
           { label: "查看 Demo", url: "assets/TdSENet-main/index.html" },
-          { label: "开源代码", url: "https://github.com/Yj-Xiong/TdSENet" },
+          { label: "Code", url: "https://github.com/Yj-Xiong/TdSENet" },
         ],
         samples: [
           {
@@ -113,7 +113,8 @@ const directions = [
         year: "2024",
         repoPath: "assets/M-CMGAN/",
         links: [
-          { label: "开源代码", url: "https://github.com/Yj-Xiong/M-CMGAN" },
+          { label: "Paper", url: "https://link.springer.com/chapter/10.1007/978-981-96-1045-7_2" },
+          { label: "Code", url: "https://github.com/Yj-Xiong/M-CMGAN" },
         ]
       }
     ]
@@ -136,7 +137,9 @@ const directions = [
         tags: ["Zero-shot TTS", "Voice Conversion", "Mamba", "Diffusion"],
         year: "2025",
         repoPath: "assets/TV-MDiff-main/",
-        links: [{ label: "查看 Demo", url: "assets/TV-MDiff-main/index.html" }],
+        links: [
+          { label: "Paper", url: "https://ieeexplore.ieee.org/document/11227557" }          
+          { label: "查看 Demo", url: "assets/TV-MDiff-main/index.html" }],
         samples: [
           {
             title: "Zero-shot TTS sentence 1",
@@ -168,7 +171,9 @@ const directions = [
         tags: ["Code-switching", "Unit Diffusion", "Soft HuBERT", "Speaker Control"],
         year: "2025",
         repoPath: "assets/unitdiff-main/",
-        links: [{ label: "查看 Demo", url: "assets/unitdiff-main/" }],
+        links: [
+          { label: "Paper", url: "https://ieeexplore.ieee.org/document/10891773" },
+          { label: "查看 Demo", url: "assets/unitdiff-main/" }],
         samples: [
           {
             title: "Code-switching synthesis",
@@ -200,7 +205,9 @@ const directions = [
         tags: ["Zero-shot", "Code-switching", "Conformer", "Diffusion"],
         year: "2025",
         repoPath: "assets/zcs-cdiff-main/",
-        links: [{ label: "查看 Demo", url: "assets/zcs-cdiff-main/index.html" }],
+        links: [
+          { label: "Paper", url: "https://ieeexplore.ieee.org/document/10889531" },
+          { label: "查看 Demo", url: "assets/zcs-cdiff-main/index.html" }],
         samples: [
           {
             title: "Zero-shot code-switching TTS",
