@@ -107,7 +107,7 @@ const directions = [
         kind: "开源代码",
         title: "M-CMGAN",
         description:
-          "在 CMGAN 框架中引入 Time-Mamba-Frequency-Conformer、通道特征分支与频率调制模块，较CMGAN可以更高效地实现单通道语音增强，同时保障增强效果。",
+          "在 CMGAN 框架中引入 Time-Mamba-Frequency-Conformer、通道与频率全局调制模块，较CMGAN可以更高效地实现单通道语音增强，同时保障增强效果。",
         result: "支持训练、推理和客观指标计算。",
         tags: ["CMGAN", "Mamba", "Conformer"],
         year: "2024",
