@@ -26,7 +26,7 @@ const directions = [
         year: "2025",
         repoPath: "assets/DyTSwiG-SE-main/",
         links: [
-          { label: "查看 Demo", url: "assets/DyTSwiG-SE-main/index.html" },
+          { label: "Demo", url: "assets/DyTSwiG-SE-main/index.html" },
           { label: "Code", url: "https://github.com/Yj-Xiong/DyTSwiG-SE" },
         ],
         samples: [
@@ -78,7 +78,7 @@ const directions = [
         year: "2025",
         repoPath: "assets/TdSENet-main/",
         links: [
-          { label: "查看 Demo", url: "assets/TdSENet-main/index.html" },
+          { label: "Demo", url: "assets/TdSENet-main/index.html" },
           { label: "Code", url: "https://github.com/Yj-Xiong/TdSENet" },
         ],
         samples: [
@@ -139,7 +139,7 @@ const directions = [
         repoPath: "assets/TV-MDiff-main/",
         links: [
           { label: "Paper", url: "https://ieeexplore.ieee.org/document/11227557" }          
-          { label: "查看 Demo", url: "assets/TV-MDiff-main/index.html" }],
+          { label: "Demo", url: "assets/TV-MDiff-main/index.html" }],
         samples: [
           {
             title: "Zero-shot TTS sentence 1",
@@ -173,7 +173,7 @@ const directions = [
         repoPath: "assets/unitdiff-main/",
         links: [
           { label: "Paper", url: "https://ieeexplore.ieee.org/document/10891773" },
-          { label: "查看 Demo", url: "assets/unitdiff-main/" }],
+          { label: "Demo", url: "assets/unitdiff-main/" }],
         samples: [
           {
             title: "Code-switching synthesis",
@@ -207,7 +207,7 @@ const directions = [
         repoPath: "assets/zcs-cdiff-main/",
         links: [
           { label: "Paper", url: "https://ieeexplore.ieee.org/document/10889531" },
-          { label: "查看 Demo", url: "assets/zcs-cdiff-main/index.html" }],
+          { label: "Demo", url: "assets/zcs-cdiff-main/index.html" }],
         samples: [
           {
             title: "Zero-shot code-switching TTS",
@@ -240,7 +240,7 @@ const directions = [
         year: "2024",
         repoPath: "assets/Six-different-models-for-synthesizing-Uyghur-language-main/",
         links: [
-          { label: "查看 Demo", url: "assets/Six-different-models-for-synthesizing-Uyghur-language-main/index.html" },
+          { label: "Demo", url: "assets/Six-different-models-for-synthesizing-Uyghur-language-main/index.html" },
         ],
         samples: [
           {
@@ -274,7 +274,7 @@ const directions = [
         year: "2024",
         repoPath: "assets/Three-different-models-for-synthesizing-Uyghur-language-main/",
         links: [
-          { label: "查看 Demo", url: "assets/Three-different-models-for-synthesizing-Uyghur-language-main/index.html" },
+          { label: "Demo", url: "assets/Three-different-models-for-synthesizing-Uyghur-language-main/index.html" },
         ],
         samples: [
           {
