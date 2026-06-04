@@ -138,8 +138,9 @@ const directions = [
         year: "2025",
         repoPath: "assets/TV-MDiff-main/",
         links: [
-          { label: "Paper", url: "https://ieeexplore.ieee.org/document/11227557" }          
-          { label: "Demo", url: "assets/TV-MDiff-main/index.html" }],
+          { label: "Paper", url: "https://ieeexplore.ieee.org/document/11227557" },
+          { label: "Demo", url: "assets/TV-MDiff-main/index.html" }
+        ],
         samples: [
           {
             title: "Zero-shot TTS sentence 1",
@@ -306,43 +307,50 @@ const publications = [
     year: "2025",
     title: "TV-MDiff: A Zero-Shot Text-To-Speech and Zero-Shot Voice Conversion System with Mamba-Based Diffusion Model",
     venue: "International Joint Conference on Neural Networks (IJCNN)",
-    authors: "Huang Z, Chen K, Yan Y"
+    authors: "Huang Z, Chen K, Yan Y",
+    link: "https://ieeexplore.ieee.org/document/11227557"
   },
   {
     year: "2025",
     title: "UnitDiff: A Unit-Diffusion Model for Code-Switching Speech Synthesis",
     venue: "IEEE Signal Processing Letters, 32:1051-1055",
-    authors: "Chen K, Huang Z, He L, Yan Y"
+    authors: "Chen K, Huang Z, He L, Yan Y",
+    link: "https://ieeexplore.ieee.org/document/10891773"
   },
   {
     year: "2025",
     title: "ZCS-CDiff: A Zero-Shot Code-Switching TTS System with Conformer-based Diffusion Model",
     venue: "IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)",
-    authors: "Chen K, Huang Z, He L, Yan Y"
+    authors: "Chen K, Huang Z, He L, Yan Y",
+    link: "https://ieeexplore.ieee.org/document/10889531"
   },
   {
     year: "2024",
     title: "Fast Sampling Based on Policy Gradient for Diffusion-Based Speech Enhancement",
     venue: "IEEE 14th International Symposium on Chinese Spoken Language Processing (ISCSLP), 576-580",
-    authors: "Jiang Y, Huang Z"
+    authors: "Jiang Y, Huang Z",
+    link: "https://doi.org/10.1109/iscslp63861.2024.10799970"
   },
   {
     year: "2024",
     title: "M-CMGAN: Attempting to Use Mamba on Speech Enhancement",
     venue: "National Conference on Man-Machine Speech Communication (NCMMSC), 15-27",
-    authors: "Xiong Y, Huang Z"
+    authors: "Xiong Y, Huang Z",
+    link: "https://link.springer.com/chapter/10.1007/978-981-96-1045-7_2"
   },
   {
     year: "2024",
     title: "Optimizing Uyghur Speech Synthesis by Combining Pretrained Cross-Lingual Model",
     venue: "ACM Transactions on Asian and Low-Resource Language Information Processing, 23(9):1-11",
-    authors: "Lu K, Huang Z, Yin M, Chen K"
+    authors: "Lu K, Huang Z, Yin M, Chen K",
+    link: "https://doi.org/10.1145/3675397"
   },
   {
     year: "2024",
     title: "CosDiff: Code-Switching TTS Model Based on A Multi-Task DDIM",
     venue: "IEEE International Conference on Multimedia and Expo (ICME)",
-    authors: "Chen K, Huang Z, Lu K, Yan Y"
+    authors: "Chen K, Huang Z, Lu K, Yan Y",
+    link: "https://doi.org/10.1109/icme57554.2024.10687605"
   }
 ];
 
@@ -468,7 +476,11 @@ function renderPublications() {
       (item) => `
         <article>
           <span class="outcome-year">${item.year}</span>
-          <h3>${item.title}</h3>
+          <h3>
+            ${item.link
+              ? `<a href="${item.link}" target="_blank" rel="noreferrer">${item.title}</a>`
+              : item.title}
+          </h3>
           <p>${item.authors}</p>
           <p>${item.venue}</p>
         </article>

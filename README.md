@@ -118,6 +118,26 @@ http://localhost:8000/demo.html?project=项目ID
 3. 外部链接应使用完整 URL，例如 `https://example.com`。
 4. 如果项目需要详情页展示，请确保项目数据中包含可渲染的 Demo 信息。
 
+### 维护项目入口链接
+
+项目卡片中的 `Demo`、`Paper`、`Code` 等入口由项目对象的 `links` 字段控制：
+
+```js
+links: [
+  { label: "Paper", url: "https://doi.org/..." },
+  { label: "Code", url: "https://github.com/..." },
+  { label: "Demo", url: "assets/project/index.html" }
+]
+```
+
+常见入口含义如下：
+
+- `Demo`：项目展示页或本地 Demo 页面
+- `Paper`：论文 DOI、IEEE、ACM、Springer 等官方页面
+- `Code`：GitHub、GitLab 或其他代码仓库
+
+`url` 以 `http` 开头时会在新窗口打开；本地相对路径会在当前页面打开。
+
 ### 添加或修改论文成果
 
 论文成果维护在 `script.js` 的论文列表数据中。
@@ -128,9 +148,9 @@ http://localhost:8000/demo.html?project=项目ID
 - `title`：论文标题
 - `venue`：会议、期刊或发表平台
 - `authors`：作者信息
-- `link`：论文链接，可选
+- `link`：论文链接，可选；建议使用 DOI 链接或出版社官方页面链接
 
-添加论文后，首页“论文成果”区域会根据脚本渲染对应内容。
+添加论文后，首页“论文成果”区域会根据脚本渲染对应内容。若填写了 `link`，论文标题会变为可点击链接，并在新窗口打开。
 
 ### 添加 Demo 音频资源
 
