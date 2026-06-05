@@ -13,7 +13,7 @@ const directions = [
     english: "Speech Enhancement",
     accent: "#087c70",
     summary:
-      "围绕复杂环境、多语言与低信噪比场景，展示单通道增强、跨语言增强、扩散模型采样与可懂度感知增强研究。",
+      "围绕复杂的现实环境与多语言场景，在低信噪比条件下恢复出语音内容，提升语音信号的感知质量、可懂度和清晰度。",
     projects: [
       {
         id: "dytswig",
