@@ -458,6 +458,34 @@ const projects = directions.flatMap((direction) =>
   direction.projects.map((project) => ({ ...project, direction }))
 );
 
+function isLinkHidden(link) {
+  return link.visible === false || link.status === "hidden";
+}
+
+function formatLinkLabel(link) {
+  if (link.status === "coming-soon") return `${link.label} 待发布`;
+  return link.label;
+}
+
+function renderProjectLinks(project) {
+  return (project.links || [])
+    .filter((link) => !isLinkHidden(link))
+    .map((link) => {
+      const label = formatLinkLabel(link);
+      if (link.status === "coming-soon" || !link.url) {
+        return `<span class="demo-link is-disabled" aria-disabled="true">${label}</span>`;
+      }
+
+      return `
+        <a class="demo-link" href="${link.url}" target="${link.url.startsWith("http") ? "_blank" : "_self"}" rel="noreferrer">
+          ${label}
+          <span aria-hidden="true">↗</span>
+        </a>
+      `;
+    })
+    .join("");
+}
+
 function renderDirectionIndex() {
   const holder = document.querySelector("#directionIndex");
   if (!holder) return;
@@ -518,16 +546,7 @@ function renderProjects() {
               </div>
               ${project.result ? `<div class="result-line">${project.result}</div>` : ""}
               <div class="link-row">
-                ${(project.links || [])
-                  .map(
-                    (link) => `
-                      <a class="demo-link" href="${link.url}" target="${link.url.startsWith("http") ? "_blank" : "_self"}" rel="noreferrer">
-                        ${link.label}
-                        <span aria-hidden="true">↗</span>
-                      </a>
-                    `
-                  )
-                  .join("")}
+                ${renderProjectLinks(project)}
                 ${
                   project.samples
                     ? `<a class="demo-link" href="demo.html?project=${project.id}">
@@ -774,16 +793,7 @@ function setupDemoPage() {
   document.querySelector("#demoTags").innerHTML = project.tags
     .map((tag) => `<span class="tag" style="--accent: ${project.direction.accent}">${tag}</span>`)
     .join("");
-  document.querySelector("#demoLinks").innerHTML = (project.links || [])
-    .map(
-      (link) => `
-        <a class="demo-link" href="${link.url}" target="${link.url.startsWith("http") ? "_blank" : "_self"}" rel="noreferrer">
-          ${link.label}
-          <span aria-hidden="true">↗</span>
-        </a>
-      `
-    )
-    .join("");
+  document.querySelector("#demoLinks").innerHTML = renderProjectLinks(project);
 
   renderDemoSamples(project);
   drawSignalCanvas(demoCanvas, 2.8);
@@ -807,16 +817,7 @@ function setupDetectPage() {
   document.querySelector("#detectTags").innerHTML = project.tags
     .map((tag) => `<span class="tag" style="--accent: ${project.direction.accent}">${tag}</span>`)
     .join("");
-  document.querySelector("#detectLinks").innerHTML = (project.links || [])
-    .map(
-      (link) => `
-        <a class="demo-link" href="${link.url}" target="${link.url.startsWith("http") ? "_blank" : "_self"}" rel="noreferrer">
-          ${link.label}
-          <span aria-hidden="true">↗</span>
-        </a>
-      `
-    )
-    .join("");
+  document.querySelector("#detectLinks").innerHTML = renderProjectLinks(project);
   document.querySelector("#detectPrompt").textContent = detect.prompt;
   document.querySelector("#detectStatus").textContent = "当前仅提供输入界面，暂未接入后端检测模型。";
   document.querySelector("#detectPlaceholderResult").textContent = detect.placeholderResult;

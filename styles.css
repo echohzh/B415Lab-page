@@ -542,6 +542,17 @@ h3 {
   color: #fff;
 }
 
+.demo-link.is-disabled,
+.project-card .demo-link.is-disabled,
+.project-card .demo-link.is-disabled:hover {
+  border-color: var(--line);
+  background: #eef1f0;
+  color: #8a948f;
+  box-shadow: none;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 .empty-state {
   padding: 22px;
   border: 1px solid var(--line);
