@@ -133,9 +133,9 @@ http://localhost:8000/detect.html?project=项目ID
 
 ```js
 links: [
-  { label: "Paper", url: "https://doi.org/..." },
-  { label: "Code", url: "https://github.com/..." },
-  { label: "Demo", url: "assets/project/index.html" }
+  { label: "Paper", url: "https://doi.org/...", type: "paper" },
+  { label: "Code", url: "https://github.com/...", type: "code", status: "released" },
+  { label: "Demo", url: "assets/project/index.html", type: "demo" }
 ]
 ```
 
@@ -147,6 +147,23 @@ links: [
 - `在线检测`：由项目对象中的 `detect` 字段自动生成，跳转到 `detect.html?project=项目ID`
 
 `url` 以 `http` 开头时会在新窗口打开；本地相对路径会在当前页面打开。
+
+入口支持按链接单独控制发布状态：
+
+```js
+{ label: "Code", url: "https://github.com/...", type: "code", status: "released" }
+{ label: "Code", type: "code", status: "coming-soon" }
+{ label: "Code", type: "code", status: "hidden" }
+```
+
+状态说明：
+
+- `released`：正常显示并可点击；未填写 `status` 时默认按该状态处理
+- `coming-soon`：显示为“Code 待发布”，不可点击
+- `hidden`：不显示该入口
+- `visible: false`：同样不显示该入口
+
+注意：这是前端展示控制，不是真正的访问权限控制。静态网站中已经部署到 `assets/` 的文件仍可能被直接访问；未公开源码或资源不要放入部署目录，也不要在 `script.js` 中写入真实私有链接。
 
 ### 添加或修改论文成果
 
