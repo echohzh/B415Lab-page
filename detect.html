@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>B415 健康检测入口</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body class="demo-body detect-body">
+    <header class="site-header">
+      <a class="brand" href="index.html#health">
+        <span class="brand-mark">HD</span>
+        <span>
+          <strong>语音感知与智能计算实验室</strong>
+          <small>Health Detection</small>
+        </span>
+      </a>
+      <nav class="top-nav" aria-label="健康检测导航">
+        <a href="index.html#health">返回语音信号检测</a>
+        <a href="index.html#projects">返回项目</a>
+      </nav>
+    </header>
+
+    <main class="demo-main detect-main">
+      <section class="demo-console detect-console" aria-labelledby="detectTitle">
+        <div class="demo-summary detect-summary">
+          <p class="eyebrow" id="detectDirection">Health Detection</p>
+          <h1 id="detectTitle">健康检测入口</h1>
+          <p id="detectDescription" class="lead">请选择一个健康检测项目并输入音频。</p>
+          <div id="detectTags" class="tag-row"></div>
+          <div id="detectLinks" class="link-row"></div>
+        </div>
+
+        <div class="demo-panel detect-panel">
+          <canvas id="detectCanvas" width="760" height="360"></canvas>
+          <div class="detect-status-card">
+            <strong>模型状态</strong>
+            <p id="detectStatus">当前仅提供输入界面，暂未接入后端检测模型。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="detect-workspace" aria-labelledby="detectInputTitle">
+        <article class="sample-card detect-input-card">
+          <h2 id="detectInputTitle">选择输入音频</h2>
+          <p id="detectPrompt">请选择或录制一段语音/音频。当前仅用于本地预览。</p>
+
+          <label class="detect-upload">
+            <span>上传音频文件</span>
+            <small id="detectAcceptText">支持常见音频格式</small>
+            <input id="detectFileInput" type="file" accept="audio/*">
+          </label>
+
+          <div class="detect-recorder" aria-label="录音输入">
+            <button id="recordToggleButton" class="record-toggle" type="button" aria-pressed="false">
+              <span class="record-icon" aria-hidden="true"></span>
+              <span id="recordToggleText">开始录音</span>
+            </button>
+            <p id="recordStatus" class="detect-note">录音仅用于本地预览，不会上传或分析。</p>
+          </div>
+
+          <div id="selectedAudio" class="detect-selected" hidden>
+            <h3>已选择音频</h3>
+            <p id="selectedFileName"></p>
+            <audio id="selectedAudioPreview" controls preload="none"></audio>
+          </div>
+        </article>
+
+        <article class="sample-card detect-result-card">
+          <h2>待接入检测结果</h2>
+          <p id="detectPlaceholderResult">当前暂未接入检测模型。</p>
+          <div class="detect-disclaimer">本页面不提供医学诊断或健康结论。</div>
+          <div id="detectTips" class="detect-tips"></div>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
