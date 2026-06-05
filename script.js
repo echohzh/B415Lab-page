@@ -310,7 +310,7 @@ const directions = [
     projects: [
       {
         id: "respiratory-disease",
-        kind: "展示项 · 待接入",
+        kind: "待接入",
         title: "呼吸系统疾病",
         description:
           "基于咳嗽音输入展示呼吸系统疾病相关检测方向，后续可接入咳嗽音采集、声学特征分析与模型推理。",
@@ -328,7 +328,7 @@ const directions = [
       },
       {
         id: "depression-detection",
-        kind: "展示项 · 待接入",
+        kind: "待接入",
         title: "抑郁症",
         description:
           "基于语音录音输入展示抑郁症相关语音健康检测方向，可关注语速、韵律、音色与情感表达等声学线索。",
@@ -346,7 +346,7 @@ const directions = [
       },
       {
         id: "parkinson-detection",
-        kind: "展示项 · 待接入",
+        kind: "待接入",
         title: "帕金森",
         description:
           "基于语音录音输入展示帕金森相关检测方向，可分析发声稳定性、基频扰动、能量变化与构音特征。",
@@ -364,7 +364,7 @@ const directions = [
       },
       {
         id: "alzheimers-detection",
-        kind: "展示项 · 待接入",
+        kind: "待接入",
         title: "阿尔茨海默症",
         description:
           "基于语音录音输入展示阿尔茨海默症相关检测方向，可结合语音、语言表达与认知相关声学线索。",
@@ -382,7 +382,7 @@ const directions = [
       },
       {
         id: "synthetic-spoof-detection",
-        kind: "展示项 · 待接入",
+        kind: "待接入",
         title: "合成伪造检测",
         description:
           "面向合成语音与伪造音频检测，展示基于语音输入的音频真实性分析方向。",
