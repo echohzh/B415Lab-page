@@ -1,5 +1,5 @@
 const labInfo = {
-  name: "新疆大学语音感知与智能计算实验室",
+  name: "B415课题组",
   subtitle: "语音语言与音频信号处理",
   office: "新疆大学博达校区信息楼 B405 & B415",
   emails: ["zhhuang@xju.edu.cn", "echohzh@163.com"],
@@ -107,7 +107,7 @@ const directions = [
         kind: "开源代码",
         title: "M-CMGAN",
         description:
-          "在 CMGAN 框架中引入 Time-Mamba-Frequency-Conformer、通道与频率全局调制模块，较CMGAN可以更高效地实现单通道语音增强，同时保障增强效果。",
+          "在 CMGAN 框架中引入 Time-Mamba-Frequency-Conformer、通道特征分支与频率调制模块，较CMGAN可以更高效地实现单通道语音增强，同时保障增强效果。",
         result: "支持训练、推理和客观指标计算。",
         tags: ["CMGAN", "Mamba", "Conformer"],
         year: "2024",
@@ -299,6 +299,106 @@ const directions = [
         ]
       }
     ]
+  },
+  {
+    id: "health",
+    name: "语音信号检测",
+    english: "Voice Signal Detection",
+    accent: "#6d5bd0",
+    summary:
+      "面向咳嗽音、语音录音与音频文件，展示呼吸、心理、神经退行性疾病和合成伪造等语音信号检测入口。",
+    projects: [
+      {
+        id: "respiratory-disease",
+        kind: "展示项 · 待接入",
+        title: "呼吸系统疾病",
+        description:
+          "基于咳嗽音输入展示呼吸系统疾病相关检测方向，后续可接入咳嗽音采集、声学特征分析与模型推理。",
+        result: "",
+        tags: ["咳嗽音", "呼吸系统", "健康检测", "待接入"],
+        year: "规划中",
+        links: [],
+        detect: {
+          inputType: "cough",
+          acceptedFormats: [".wav", ".mp3", ".m4a"],
+          prompt: "请选择或录制一段咳嗽音频，用于后续呼吸系统疾病相关检测能力接入。",
+          placeholderResult: "当前仅展示咳嗽音输入流程，暂未接入疾病检测模型。",
+          tips: ["建议音频时长 3–10 秒", "尽量避免背景噪声", "录音/文件仅用于本地预览，不会上传或分析"]
+        }
+      },
+      {
+        id: "depression-detection",
+        kind: "展示项 · 待接入",
+        title: "抑郁症",
+        description:
+          "基于语音录音输入展示抑郁症相关语音健康检测方向，关注语速、韵律、音色与情感表达等声学线索。",
+        result: "",
+        tags: ["语音录音", "心理健康", "抑郁症", "待接入"],
+        year: "规划中",
+        links: [],
+        detect: {
+          inputType: "speech",
+          acceptedFormats: [".wav", ".mp3", ".m4a"],
+          prompt: "请选择或录制一段自然语音，用于后续抑郁症相关语音健康检测能力接入。",
+          placeholderResult: "当前仅展示语音输入流程，暂未接入心理健康检测模型。",
+          tips: ["建议朗读或自然说话 15–30 秒", "保持正常语速", "录音/文件仅用于本地预览，不会上传或分析"]
+        }
+      },
+      {
+        id: "parkinson-detection",
+        kind: "展示项 · 待接入",
+        title: "帕金森",
+        description:
+          "基于语音录音输入展示帕金森相关检测方向，后续可分析发声稳定性、基频扰动、能量变化与构音特征。",
+        result: "",
+        tags: ["语音录音", "神经系统", "帕金森", "待接入"],
+        year: "规划中",
+        links: [],
+        detect: {
+          inputType: "speech",
+          acceptedFormats: [".wav", ".mp3", ".m4a"],
+          prompt: "请选择或录制一段持续发声或自然语音，用于后续帕金森相关语音检测能力接入。",
+          placeholderResult: "当前仅展示语音输入流程，暂未接入神经系统疾病检测模型。",
+          tips: ["可录制持续元音或短句", "建议音频时长 5–15 秒", "录音/文件仅用于本地预览，不会上传或分析"]
+        }
+      },
+      {
+        id: "alzheimers-detection",
+        kind: "展示项 · 待接入",
+        title: "阿尔茨海默症",
+        description:
+          "基于语音录音输入展示阿尔茨海默症相关检测方向，后续可结合语音、语言表达与认知相关声学线索。",
+        result: "",
+        tags: ["语音录音", "认知健康", "阿尔茨海默症", "待接入"],
+        year: "规划中",
+        links: [],
+        detect: {
+          inputType: "speech",
+          acceptedFormats: [".wav", ".mp3", ".m4a"],
+          prompt: "请选择或录制一段自然语音，用于后续阿尔茨海默症相关语音与语言检测能力接入。",
+          placeholderResult: "当前仅展示语音输入流程，暂未接入认知健康检测模型。",
+          tips: ["建议描述图片、事件或自由表达 20–60 秒", "保持自然表达", "录音/文件仅用于本地预览，不会上传或分析"]
+        }
+      },
+      {
+        id: "synthetic-spoof-detection",
+        kind: "展示项 · 待接入",
+        title: "合成伪造检测",
+        description:
+          "面向合成语音与伪造音频检测，展示基于语音输入的音频真实性分析方向。",
+        result: "",
+        tags: ["语音输入", "伪造检测", "合成语音", "待接入"],
+        year: "规划中",
+        links: [],
+        detect: {
+          inputType: "audio",
+          acceptedFormats: [".wav", ".mp3", ".flac", ".m4a"],
+          prompt: "请选择或录制一段待分析音频，用于后续合成语音与伪造音频检测能力接入。",
+          placeholderResult: "当前仅展示音频输入流程，暂未接入合成伪造检测模型。",
+          tips: ["支持语音文件或现场录音", "建议优先使用 .wav 格式文件", "录音/文件仅用于本地预览，不会上传或分析"]
+        }
+      }
+    ]
   }
 ];
 
@@ -416,9 +516,9 @@ function renderProjects() {
               <div class="tag-row">
                 ${project.tags.map((tag) => `<span class="tag">${tag}</span>`).join("")}
               </div>
-              <div class="result-line">${project.result}</div>
+              ${project.result ? `<div class="result-line">${project.result}</div>` : ""}
               <div class="link-row">
-                ${project.links
+                ${(project.links || [])
                   .map(
                     (link) => `
                       <a class="demo-link" href="${link.url}" target="${link.url.startsWith("http") ? "_blank" : "_self"}" rel="noreferrer">
@@ -432,6 +532,14 @@ function renderProjects() {
                   project.samples
                     ? `<a class="demo-link" href="demo.html?project=${project.id}">
                         本页试听
+                        <span aria-hidden="true">↗</span>
+                      </a>`
+                    : ""
+                }
+                ${
+                  project.detect
+                    ? `<a class="demo-link" href="detect.html?project=${project.id}">
+                        在线检测
                         <span aria-hidden="true">↗</span>
                       </a>`
                     : ""
@@ -666,7 +774,7 @@ function setupDemoPage() {
   document.querySelector("#demoTags").innerHTML = project.tags
     .map((tag) => `<span class="tag" style="--accent: ${project.direction.accent}">${tag}</span>`)
     .join("");
-  document.querySelector("#demoLinks").innerHTML = project.links
+  document.querySelector("#demoLinks").innerHTML = (project.links || [])
     .map(
       (link) => `
         <a class="demo-link" href="${link.url}" target="${link.url.startsWith("http") ? "_blank" : "_self"}" rel="noreferrer">
@@ -679,6 +787,117 @@ function setupDemoPage() {
 
   renderDemoSamples(project);
   drawSignalCanvas(demoCanvas, 2.8);
+}
+
+function setupDetectPage() {
+  const detectCanvas = document.querySelector("#detectCanvas");
+  if (!detectCanvas) return;
+
+  const detectProjects = projects.filter((item) => item.detect);
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("project");
+  const project = detectProjects.find((item) => item.id === id) || detectProjects[0];
+  if (!project) return;
+
+  const detect = project.detect;
+  document.title = `${project.title} | B415 健康检测入口`;
+  document.querySelector("#detectDirection").textContent = project.direction.name;
+  document.querySelector("#detectTitle").textContent = project.title;
+  document.querySelector("#detectDescription").textContent = project.description;
+  document.querySelector("#detectTags").innerHTML = project.tags
+    .map((tag) => `<span class="tag" style="--accent: ${project.direction.accent}">${tag}</span>`)
+    .join("");
+  document.querySelector("#detectLinks").innerHTML = (project.links || [])
+    .map(
+      (link) => `
+        <a class="demo-link" href="${link.url}" target="${link.url.startsWith("http") ? "_blank" : "_self"}" rel="noreferrer">
+          ${link.label}
+          <span aria-hidden="true">↗</span>
+        </a>
+      `
+    )
+    .join("");
+  document.querySelector("#detectPrompt").textContent = detect.prompt;
+  document.querySelector("#detectStatus").textContent = "当前仅提供输入界面，暂未接入后端检测模型。";
+  document.querySelector("#detectPlaceholderResult").textContent = detect.placeholderResult;
+  document.querySelector("#detectTips").innerHTML = detect.tips
+    .map((tip) => `<div class="detect-tip">${tip}</div>`)
+    .join("");
+
+  const fileInput = document.querySelector("#detectFileInput");
+  const acceptText = document.querySelector("#detectAcceptText");
+  const selectedAudio = document.querySelector("#selectedAudio");
+  const selectedFileName = document.querySelector("#selectedFileName");
+  const audioPreview = document.querySelector("#selectedAudioPreview");
+  const recordToggleButton = document.querySelector("#recordToggleButton");
+  const recordToggleText = document.querySelector("#recordToggleText");
+  const recordStatus = document.querySelector("#recordStatus");
+  let currentObjectUrl = "";
+  let mediaRecorder = null;
+  let mediaStream = null;
+  let audioChunks = [];
+
+  function previewAudio(blob, name) {
+    if (currentObjectUrl) URL.revokeObjectURL(currentObjectUrl);
+    currentObjectUrl = URL.createObjectURL(blob);
+    selectedAudio.hidden = false;
+    selectedFileName.textContent = name;
+    audioPreview.src = currentObjectUrl;
+  }
+
+  if (fileInput) {
+    fileInput.accept = detect.acceptedFormats.join(",");
+    acceptText.textContent = `支持格式：${detect.acceptedFormats.join("、")}`;
+    fileInput.addEventListener("change", () => {
+      const file = fileInput.files?.[0];
+      if (!file) return;
+      previewAudio(file, file.name);
+      recordStatus.textContent = "已选择本地音频，仅用于浏览器预览，不会上传或分析。";
+    });
+  }
+
+  function setRecordingState(isRecording) {
+    recordToggleButton?.classList.toggle("is-recording", isRecording);
+    recordToggleButton?.setAttribute("aria-pressed", String(isRecording));
+    if (recordToggleText) recordToggleText.textContent = isRecording ? "停止录音" : "开始录音";
+  }
+
+  recordToggleButton?.addEventListener("click", async () => {
+    if (mediaRecorder?.state === "recording") {
+      mediaRecorder.stop();
+      setRecordingState(false);
+      return;
+    }
+
+    if (!navigator.mediaDevices?.getUserMedia || !window.MediaRecorder) {
+      recordStatus.textContent = "当前浏览器不支持录音，请使用上传音频文件。";
+      return;
+    }
+
+    try {
+      mediaStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      audioChunks = [];
+      mediaRecorder = new MediaRecorder(mediaStream);
+      mediaRecorder.addEventListener("dataavailable", (event) => {
+        if (event.data.size > 0) audioChunks.push(event.data);
+      });
+      mediaRecorder.addEventListener("stop", () => {
+        const blob = new Blob(audioChunks, { type: mediaRecorder.mimeType || "audio/webm" });
+        previewAudio(blob, "本地录音预览");
+        mediaStream.getTracks().forEach((track) => track.stop());
+        mediaStream = null;
+        recordStatus.textContent = "录音已生成本地预览，暂未上传或分析。";
+      });
+      mediaRecorder.start();
+      setRecordingState(true);
+      recordStatus.textContent = "正在录音，本次录音仅保留在当前浏览器中。";
+    } catch (error) {
+      setRecordingState(false);
+      recordStatus.textContent = "无法开始录音，请检查麦克风权限或改用上传音频文件。";
+    }
+  });
+
+  drawSignalCanvas(detectCanvas, 1.6);
 }
 
 function init() {
@@ -694,6 +913,7 @@ function init() {
   }
 
   setupDemoPage();
+  setupDetectPage();
 }
 
 init();
