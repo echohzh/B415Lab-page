@@ -8,11 +8,12 @@
 
 主要功能包括：
 
-- 展示 B415 课题组简介与联系方式
-- 按研究方向展示语音项目与 Demo
+- 展示新疆大学语音感知与智能计算实验室简介与联系方式
+- 按研究方向展示语音项目、Demo 与语音信号检测入口
 - 支持项目搜索与方向筛选
 - 展示精选论文成果
 - 提供项目 Demo 详情页与音频示例播放
+- 提供语音信号检测输入页，支持上传音频和本地录音预览
 - 支持跳转到外部论文、代码仓库或项目页面
 
 ## 目录结构
@@ -21,6 +22,7 @@
 .
 ├── index.html      # 网站首页
 ├── demo.html       # 项目 Demo 详情页
+├── detect.html     # 语音信号检测输入页
 ├── styles.css      # 页面样式
 ├── script.js       # 网站数据与交互逻辑
 ├── assets/         # 项目音频、图片和独立 Demo 页面等静态资源
@@ -61,11 +63,17 @@ http://localhost:8000
 http://localhost:8000/demo.html?project=项目ID
 ```
 
+如需查看某个语音信号检测页面，可以访问：
+
+```text
+http://localhost:8000/detect.html?project=项目ID
+```
+
 其中 `项目ID` 来自 `script.js` 中对应项目的 `id` 字段。
 
 ## 页面内容维护
 
-网站的大部分展示内容集中维护在 `script.js` 中，页面结构在 `index.html` 和 `demo.html` 中，视觉样式在 `styles.css` 中。
+网站的大部分展示内容集中维护在 `script.js` 中，页面结构在 `index.html`、`demo.html` 和 `detect.html` 中，视觉样式在 `styles.css` 中。
 
 ### 修改实验室信息
 
@@ -110,6 +118,7 @@ http://localhost:8000/demo.html?project=项目ID
 - `result`：项目亮点或结果说明
 - `links`：外部链接或本地页面链接
 - `samples`：Demo 音频示例
+- `detect`：语音信号检测入口配置，可选
 
 添加项目时请注意：
 
@@ -135,6 +144,7 @@ links: [
 - `Demo`：项目展示页或本地 Demo 页面
 - `Paper`：论文 DOI、IEEE、ACM、Springer 等官方页面
 - `Code`：GitHub、GitLab 或其他代码仓库
+- `在线检测`：由项目对象中的 `detect` 字段自动生成，跳转到 `detect.html?project=项目ID`
 
 `url` 以 `http` 开头时会在新窗口打开；本地相对路径会在当前页面打开。
 
@@ -171,6 +181,36 @@ assets/项目名/audio/example.wav
 
 建议使用浏览器兼容性较好的音频格式，例如 `.wav`、`.mp3` 或 `.ogg`。
 
+### 添加或修改语音信号检测入口
+
+语音信号检测入口维护在项目对象的 `detect` 字段中。带有 `detect` 字段的项目卡片会自动显示“在线检测”，并跳转到：
+
+```text
+detect.html?project=项目ID
+```
+
+常见配置示例：
+
+```js
+detect: {
+  inputType: "speech",
+  acceptedFormats: [".wav", ".mp3", ".m4a"],
+  prompt: "请选择或录制一段自然语音。",
+  placeholderResult: "当前仅展示语音输入流程，暂未接入检测模型。",
+  tips: ["建议在安静环境中录制", "录音/文件仅用于本地预览，不会上传或分析"]
+}
+```
+
+字段说明：
+
+- `inputType`：输入类型，例如 `cough`、`speech`、`audio`
+- `acceptedFormats`：检测页文件选择框允许的音频格式
+- `prompt`：检测页输入提示文案
+- `placeholderResult`：未接入后端时的结果占位说明
+- `tips`：检测页右侧提示信息
+
+当前检测页仅提供前端输入界面：支持上传音频文件和浏览器本地录音预览，不会上传音频，也不会调用后端模型。
+
 ## 部署说明
 
 项目为静态网站，部署时只需要上传项目根目录下的 HTML、CSS、JS 和 `assets/` 资源即可。
@@ -191,6 +231,7 @@ assets/项目名/audio/example.wav
 ```text
 index.html
 demo.html
+detect.html
 styles.css
 script.js
 assets/
@@ -200,9 +241,10 @@ assets/
 
 ## 注意事项
 
-- 不要随意修改项目 `id`，否则已有的 `demo.html?project=项目ID` 链接可能失效。
+- 不要随意修改项目 `id`，否则已有的 `demo.html?project=项目ID` 和 `detect.html?project=项目ID` 链接可能失效。
 - 添加外部链接时，请使用 HTML 或 JavaScript 中正确的 URL 格式，不要使用 Markdown 链接语法。
 - 添加音频文件后，建议在本地服务器中测试播放效果。
+- 检测页当前只做前端展示和本地音频预览，不应写成已完成在线诊断或模型检测。
 - 资源文件路径区分大小写，部署到 Linux 服务器后大小写不一致可能导致文件无法加载。
 - `.DS_Store` 是 macOS 自动生成的系统文件，通常不需要提交到仓库。
 - 如果删除或移动 `assets/` 中的资源，需要同步更新 `script.js` 中对应路径。
