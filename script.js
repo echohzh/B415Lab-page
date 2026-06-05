@@ -303,7 +303,7 @@ const directions = [
   {
     id: "health",
     name: "语音信号检测",
-    english: "Voice Signal Detection",
+    english: "Speech Signal Detection",
     accent: "#6d5bd0",
     summary:
       "面向咳嗽音、语音录音与音频文件，展示呼吸、心理、神经退行性疾病和合成伪造等语音信号检测入口。",
